@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <CheckBox
+        android:id="@+id/hr2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 hr"
+        app:layout_constraintBottom_toBottomOf="@+id/hr15"
+        app:layout_constraintStart_toStartOf="@+id/hr1" />
+
+    <CheckBox
+        android:id="@+id/capacity9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9-12"
+        app:layout_constraintBottom_toBottomOf="@+id/capacity15"
+        app:layout_constraintStart_toStartOf="@+id/capacity14" />
+
+    <CheckBox
+        android:id="@+id/capacity15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="5-8"
+        app:layout_constraintStart_toStartOf="@+id/capacityAny"
+        app:layout_constraintTop_toBottomOf="@+id/Capacity" />
+
+    <CheckBox
+        android:id="@+id/capacity14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1-4"
+        app:layout_constraintBottom_toBottomOf="@+id/capacityAny"
+        app:layout_constraintStart_toStartOf="@+id/msel" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Location"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/brody"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hasBooked" />
+
+    <TextView
+        android:id="@+id/Capacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Capacity"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/capacity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Select Time"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/Capacity"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="@+id/capacity"
+        app:layout_constraintStart_toStartOf="@+id/capacity15" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Duration"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/capacity"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <Button
+        android:id="@+id/listroom"
+        android:layout_width="410dp"
+        android:layout_height="65dp"
+        android:background="#68ACE5"
+        android:clickable="true"
+        android:fontFamily="@font/roboto"
+        android:onClick="bookRooms"
+        android:text="List Rooms"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hr15"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/hasBooked"
+        android:layout_width="410dp"
+        android:layout_height="32dp"
+        android:background="@color/darkRed"
+        android:clickable="true"
+        android:gravity="center"
+        android:onClick="editRooms"
+        android:text="You Have an Active Booking"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/brody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="Brody"
+        app:layout_constraintBottom_toBottomOf="@+id/msel"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <CheckBox
+        android:id="@+id/hr1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 hr"
+        app:layout_constraintBottom_toBottomOf="@+id/hr5"
+        app:layout_constraintStart_toStartOf="@+id/capacity9" />
+
+    <CheckBox
+        android:id="@+id/hr5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.5 hr"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="@+id/capacity15" />
+
+    <CheckBox
+        android:id="@+id/hr15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="1.5 hr"
+        app:layout_constraintStart_toStartOf="@+id/hr5"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <CheckBox
+        android:id="@+id/capacityAny"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Any"
+        app:layout_constraintBottom_toBottomOf="@+id/Capacity"
+        app:layout_constraintStart_toStartOf="@+id/brody" />
+
+    <CheckBox
+        android:id="@+id/msel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="MSEL"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/brody"
+        app:layout_constraintTop_toBottomOf="@+id/hasBooked" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capacity15" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capacity" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="264dp"
+        android:layout_height="200dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/divider3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
