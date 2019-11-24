@@ -1,13 +1,10 @@
 package com.example.myapplication;
 
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Display;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -62,7 +59,7 @@ public class RoomsActivity extends AppCompatActivity {
     private int upperBound = 35;
     private int previousSelection = -1;
     private ImageButton[] buttons;
-    private int curr = 7915; // populated with real data
+    private int curr = 7914; // populated with real data
     private ArrayList<String> selections = new ArrayList<>();
     private HashMap<Integer, Double> idMap = new HashMap<>();
     private SharedPreferences myPrefs;
@@ -71,7 +68,7 @@ public class RoomsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rooms_activity);
+        setContentView(R.layout.activity_rooms);
         myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         assert getSupportActionBar() != null;   //null check
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
