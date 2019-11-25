@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bookRooms(View ib) {
-        Intent intent = new Intent(this, RoomsActivity.class);
+        Intent intent = new Intent(this, SwipeRoomsActivity.class);
         startActivity(intent);
     }
 

@@ -26,7 +26,7 @@ public class RoomPagerAdapter extends
 
     @Override
     public int getCount() {
-        return 100;
+        return 16;
     }
 
     @Override

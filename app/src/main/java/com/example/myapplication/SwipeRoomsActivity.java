@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class SwipeRoomsActivity extends FragmentActivity {
     // When requested, this adapter returns a DemoObjectFragment,
@@ -21,5 +22,9 @@ public class SwipeRoomsActivity extends FragmentActivity {
                         getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+    }
+
+    public void confirmBooking(View ib) {
+        //nothing for now
     }
 }

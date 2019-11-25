@@ -41,7 +41,7 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     public void goToFilters(View view) {
-        Intent intent = new Intent(this, SwipeRoomsActivity.class); //RoomsActivity.class);
+        Intent intent = new Intent(this, MainActivity.class); //RoomsActivity.class);
         startActivity(intent);
     }
 
