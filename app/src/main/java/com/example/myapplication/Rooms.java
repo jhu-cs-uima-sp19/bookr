@@ -1,12 +1,16 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.Pair;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.RoomDatabase;
 
@@ -34,10 +38,15 @@ public class Rooms implements Serializable{
         put("7924", "BLC 5010");
     }};
 
+    @Ignore
+
     public Rooms(int eid, JSONArray data) {
         this.eid = eid;
         this.name = eid2room.get(eid);
+        instantiate(data);
+    }
 
+    public void instantiate(JSONArray data) {
         Pair[] bookings = new Pair[data.length()]; // remove unnecessary details from JSONArray
         try {
             bookings = condense(data);
@@ -46,12 +55,10 @@ public class Rooms implements Serializable{
         }
 
         boolean[] boolArray = makeBoolArray(bookings); // convert reduced data to boolean array
-
     }
 
     public boolean[] makeBoolArray(Pair[] input) {
         boolean[] grid = new boolean[96];
-
         return grid;
     }
 
@@ -77,102 +84,199 @@ public class Rooms implements Serializable{
     public int capacity;
 
     // filter by time slots here
-    public boolean twelveAM;
+    public boolean twelveAMday1;
 
-    public boolean twelveThirtyAM;
+    public boolean twelveThirtyAMday1;
 
-    public boolean oneAM;
+    public boolean oneAMday1;
 
-    public boolean oneThirtyAM;
+    public boolean oneThirtyAMday1;
 
-    public boolean twoAM;
+    public boolean twoAMday1;
 
-    public boolean twoThirtyAM;
+    public boolean twoThirtyAMday1;
 
-    public boolean threeAM;
+    public boolean threeAMday1;
 
-    public boolean threeThirtyAM;
+    public boolean threeThirtyAMday1;
 
-    public boolean fourAM;
+    public boolean fourAMday1;
 
-    public boolean fourThirtyAM;
+    public boolean fourThirtyAMday1;
 
-    public boolean fiveAM;
+    public boolean fiveAMday1;
 
-    public boolean fiveThirtyAM;
+    public boolean fiveThirtyAMday1;
 
-    public boolean sixAM;
+    public boolean sixAMday1;
 
-    public boolean sixThirtyAM;
+    public boolean sixThirtyAMday1;
 
-    public boolean sevenAM;
+    public boolean sevenAMday1;
 
-    public boolean sevenThirtyAM;
+    public boolean sevenThirtyAMday1;
 
-    public boolean eightAM;
+    public boolean eightAMday1;
 
-    public boolean eightThirtyAM;
+    public boolean eightThirtyAMday1;
 
-    public boolean nineAM;
+    public boolean nineAMday1;
 
-    public boolean nineThirtyAM;
+    public boolean nineThirtyAMday1;
 
-    public boolean tenAM;
+    public boolean tenAMday1;
 
-    public boolean tenThirtyAM;
+    public boolean tenThirtyAMday1;
 
-    public boolean elevenAM;
+    public boolean elevenAMday1;
 
-    public boolean elevenThirtyAM;
+    public boolean elevenThirtyAMday1;
 
     //pms here
-    public boolean twelvePM;
+    public boolean twelvePMday1;
 
-    public boolean twelveThirtyPM;
+    public boolean twelveThirtyPMday1;
 
-    public boolean onePM;
+    public boolean onePMday1;
 
-    public boolean oneThirtyPM;
+    public boolean oneThirtyPMday1;
 
-    public boolean twoPM;
+    public boolean twoPMday1;
 
-    public boolean twoThirtyPM;
+    public boolean twoThirtyPMday1;
 
-    public boolean threePM;
+    public boolean threePMday1;
 
-    public boolean threeThirtyPM;
+    public boolean threeThirtyPMday1;
 
-    public boolean fourPM;
+    public boolean fourPMday1;
 
-    public boolean fourThirtyPM;
+    public boolean fourThirtyPMday1;
 
-    public boolean fivePM;
+    public boolean fivePMday1;
 
-    public boolean fiveThirtyPM;
+    public boolean fiveThirtyPMday1;
 
-    public boolean sixPM;
+    public boolean sixPMday1;
 
-    public boolean sixThirtyPM;
+    public boolean sixThirtyPMday1;
 
-    public boolean sevenPM;
+    public boolean sevenPMday1;
 
-    public boolean sevenThirtyPM;
+    public boolean sevenThirtyPMday1;
 
-    public boolean eightPM;
+    public boolean eightPMday1;
 
-    public boolean eightThirtyPM;
+    public boolean eightThirtyPMday1;
 
-    public boolean ninePM;
+    public boolean ninePMday1;
 
-    public boolean nineThirtyPM;
+    public boolean nineThirtyPMday1;
 
-    public boolean tenPM;
+    public boolean tenPMday1;
 
-    public boolean tenThirtyPM;
+    public boolean tenThirtyPMday1;
 
-    public boolean elevenPM;
+    public boolean elevenPMday1;
 
-    public boolean elevenThirtyPM;
+    public boolean elevenThirtyPMday1;
+
+    public boolean twelveAMday2;
+
+    public boolean twelveThirtyAMday2;
+
+    public boolean oneAMday2;
+
+    public boolean oneThirtyAMday2;
+
+    public boolean twoAMday2;
+
+    public boolean twoThirtyAMday2;
+
+    public boolean threeAMday2;
+
+    public boolean threeThirtyAMday2;
+
+    public boolean fourAMday2;
+
+    public boolean fourThirtyAMday2;
+
+    public boolean fiveAMday2;
+
+    public boolean fiveThirtyAMday2;
+
+    public boolean sixAMday2;
+
+    public boolean sixThirtyAMday2;
+
+    public boolean sevenAMday2;
+
+    public boolean sevenThirtyAMday2;
+
+    public boolean eightAMday2;
+
+    public boolean eightThirtyAMday2;
+
+    public boolean nineAMday2;
+
+    public boolean nineThirtyAMday2;
+
+    public boolean tenAMday2;
+
+    public boolean tenThirtyAMday2;
+
+    public boolean elevenAMday2;
+
+    public boolean elevenThirtyAMday2;
+
+    //pms here
+    public boolean twelvePMday2;
+
+    public boolean twelveThirtyPMday2;
+
+    public boolean onePMday2;
+
+    public boolean oneThirtyPMday2;
+
+    public boolean twoPMday2;
+
+    public boolean twoThirtyPMday2;
+
+    public boolean threePMday2;
+
+    public boolean threeThirtyPMday2;
+
+    public boolean fourPMday2;
+
+    public boolean fourThirtyPMday2;
+
+    public boolean fivePMday2;
+
+    public boolean fiveThirtyPMday2;
+
+    public boolean sixPMday2;
+
+    public boolean sixThirtyPMday2;
+
+    public boolean sevenPMday2;
+
+    public boolean sevenThirtyPMday2;
+
+    public boolean eightPMday2;
+
+    public boolean eightThirtyPMday2;
+
+    public boolean ninePMday2;
+
+    public boolean nineThirtyPMday2;
+
+    public boolean tenPMday2;
+
+    public boolean tenThirtyPMday2;
+
+    public boolean elevenPMday2;
+
+    public boolean elevenThirtyPMday2;
 
 }
 
