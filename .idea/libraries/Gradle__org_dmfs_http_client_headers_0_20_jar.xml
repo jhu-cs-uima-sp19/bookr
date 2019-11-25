@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.dmfs:http-client-headers:0.20@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-client-headers/0.20/ddb16c1c41b6a1ed67b7ed553c2cb4a75a9cedd5/http-client-headers-0.20.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-client-headers/0.20/6925ac4890ab2393512be3e7a179c6d6ba8d91f7/http-client-headers-0.20-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-client-headers/0.20/e25e4d0992f1199e6485a093bc7fb8e57ca53237/http-client-headers-0.20-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

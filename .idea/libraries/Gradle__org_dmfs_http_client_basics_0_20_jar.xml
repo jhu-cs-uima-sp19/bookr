@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.dmfs:http-client-basics:0.20@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-client-basics/0.20/db195358ef747ab9658ea4992daecfebcb5168c0/http-client-basics-0.20.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-client-basics/0.20/30f6cf868692060526e82bb82b959340921fa8ce/http-client-basics-0.20-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-client-basics/0.20/c2b691fce1dc7f1b2913081d950fd70c6e81c533/http-client-basics-0.20-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

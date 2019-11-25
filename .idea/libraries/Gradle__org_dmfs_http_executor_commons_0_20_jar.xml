@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.dmfs:http-executor-commons:0.20@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-executor-commons/0.20/219ae3a9e2004266aad07981802b693c5752464b/http-executor-commons-0.20.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-executor-commons/0.20/afae560ddc71389200daa6270f1c356f64188442/http-executor-commons-0.20-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/http-executor-commons/0.20/e78cf3908a3a67af64abc9cfba62ff2a3cdc7ee0/http-executor-commons-0.20-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

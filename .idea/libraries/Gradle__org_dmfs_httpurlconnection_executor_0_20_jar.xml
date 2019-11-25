@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: org.dmfs:httpurlconnection-executor:0.20@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/httpurlconnection-executor/0.20/7bed9265ed398a25bcf4b03bf93f6270f3311f1c/httpurlconnection-executor-0.20.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/httpurlconnection-executor/0.20/1fa0d7bc13e5b55167ccdefb91a88738a25da15f/httpurlconnection-executor-0.20-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.dmfs/httpurlconnection-executor/0.20/aefc5a80b42525dc10f7e453942169ebe9baef00/httpurlconnection-executor-0.20-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
