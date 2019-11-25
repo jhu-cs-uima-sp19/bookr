@@ -12,7 +12,7 @@ import androidx.room.Update;
 public interface DaoAccess {
 
     @Insert
-    long insertRoom(Rooms room);
+    void insertRoom(Rooms room);
 
     @Query("SELECT * FROM " + BookingDatabase.TABLE_NAME_BOOKING)
     List<Rooms> fetchAllRooms();

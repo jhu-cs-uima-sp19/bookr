@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.util.Pair;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.RoomDatabase;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 @Entity(tableName = BookingDatabase.TABLE_NAME_BOOKING)
 public class Rooms implements Serializable{
@@ -35,6 +37,30 @@ public class Rooms implements Serializable{
     public Rooms(int eid, JSONArray data) {
         this.eid = eid;
         this.name = eid2room.get(eid);
+
+        Pair[] bookings = new Pair[data.length()]; // remove unnecessary details from JSONArray
+        try {
+            bookings = condense(data);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        boolean[] boolArray = makeBoolArray(bookings); // convert reduced data to boolean array
+
+    }
+
+    public boolean[] makeBoolArray(Pair[] input) {
+        boolean[] grid = new boolean[96];
+
+        return grid;
+    }
+
+    public Pair[] condense(JSONArray input) throws JSONException {
+        Pair[] bookings = new Pair[input.length()];
+        for (int i = 0; i < input.length(); i++) {
+            bookings[i] = new Pair(input.getJSONObject(i).getString("toDate"),input.getJSONObject(i).getString("toDate"));
+        }
+        return bookings;
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -149,6 +175,8 @@ public class Rooms implements Serializable{
     public boolean elevenThirtyPM;
 
 }
+
+
 
 
 

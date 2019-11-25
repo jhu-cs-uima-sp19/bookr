@@ -261,7 +261,7 @@ public class RoomsActivity extends AppCompatActivity {
         this.getSupportActionBar().setTitle(input);
     }
 
-    public void getDatafromAPI() {
+    public void getRoomData(int eid) {
         String url = "https://jhu.libcal.com/1.1/oauth/token";
         String url2 = "https://jhu.libcal.com/1.1/space/bookings";
 
@@ -276,7 +276,7 @@ public class RoomsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         SharedPreferences.Editor editor = myPrefs.edit();
-                        editor.putString("Response", response.toString());
+                        editor.putString(eid + "", response.toString());
                         editor.apply();
                         System.out.println(myPrefs.getAll().toString());
 
@@ -287,6 +287,12 @@ public class RoomsActivity extends AppCompatActivity {
                         Log.e("failed", error.toString());
                     }
                 }) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("eid", eid + "");
+                        return params;
+                    }
 
                     @Override
                     public Map<String, String> getHeaders() {
