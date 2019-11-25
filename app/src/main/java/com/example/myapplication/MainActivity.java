@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -14,12 +15,19 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
+    BookingDatabase bdatabase;
     DatePickerDialog picker;
     EditText eText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // create database
+        bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
+                BookingDatabase.DB_NAME).fallbackToDestructiveMigration().build();
+
 
         Intent intent = getIntent();
         boolean inactive = intent.getBooleanExtra("invisible", true);
