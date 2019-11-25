@@ -38,15 +38,17 @@ public class Rooms implements Serializable{
         put("7924", "BLC 5010");
     }};
 
-    @Ignore
+    public Rooms() {
+
+    }
 
     public Rooms(int eid, JSONArray data) {
         this.eid = eid;
-        this.name = eid2room.get(eid);
         instantiate(data);
     }
 
     public void instantiate(JSONArray data) {
+        this.name = eid2room.get(eid);
         Pair[] bookings = new Pair[data.length()]; // remove unnecessary details from JSONArray
         try {
             bookings = condense(data);
