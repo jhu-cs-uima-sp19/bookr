@@ -50,11 +50,10 @@ public class MainActivity extends AppCompatActivity {
         bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
                 BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
 
-        class createDatabase extends AsyncTask<Void, Void, Void>
+        class createDatabase extends AsyncTask<Void, Void, Void> // Need to run database inserts in async thread
         {
             @Override
             protected Void doInBackground(Void... arg0) {
-                bdatabase.daoAccess().nukeTable();
                 for (int eid = 7909; eid < 7925; eid++) {
                     String string_data = myPrefs.getString(eid + "", "DNE"); // gets data from SharedPreferences
                     JSONArray data = recoverJSON(string_data); // converts back to JSON
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(Void result1) {
-                System.out.println(bdatabase.daoAccess().fetchAllRooms().toString());
+                //System.out.println(bdatabase.daoAccess().fetchAllRooms().toString());
             }
         }
         new createDatabase().execute();
