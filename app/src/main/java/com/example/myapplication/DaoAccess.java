@@ -5,13 +5,14 @@ import java.util.List;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
 @Dao
 public interface DaoAccess {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertRoom(Rooms room);
 
     @Query("SELECT * FROM " + BookingDatabase.TABLE_NAME_BOOKING)
@@ -179,4 +180,7 @@ public interface DaoAccess {
     // We should never need this method but just in case
     @Delete
     int deleteRoom(Rooms room);
+
+    @Query("DELETE FROM " + BookingDatabase.TABLE_NAME_BOOKING)
+    public void nukeTable();
 }

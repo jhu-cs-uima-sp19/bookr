@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.InputType;
@@ -30,6 +31,7 @@ import org.json.JSONException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     BookingDatabase bdatabase;
@@ -46,8 +48,29 @@ public class MainActivity extends AppCompatActivity {
 
         // create database
         bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
-                BookingDatabase.DB_NAME).fallbackToDestructiveMigration().build();
-        createDatabase();
+                BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
+
+        class createDatabase extends AsyncTask<Void, Void, Void>
+        {
+            @Override
+            protected Void doInBackground(Void... arg0) {
+                bdatabase.daoAccess().nukeTable();
+                for (int eid = 7909; eid < 7925; eid++) {
+                    String string_data = myPrefs.getString(eid + "", "DNE"); // gets data from SharedPreferences
+                    JSONArray data = recoverJSON(string_data); // converts back to JSON
+                    Rooms room = new Rooms(eid, data); // instantiates Rooms class for database
+                    bdatabase.daoAccess().insertRoom(room);
+
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void result1) {
+                System.out.println(bdatabase.daoAccess().fetchAllRooms().toString());
+            }
+        }
+        new createDatabase().execute();
 
         Intent intent = getIntent();
         boolean inactive = intent.getBooleanExtra("invisible", true);
@@ -100,77 +123,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void createDatabase() {
         for (int eid= 7909; eid < 7925; eid++) {
-            getRoomData(eid); //adds data to SharedPreferences
             String string_data = myPrefs.getString(eid + "", "DNE"); // gets data from SharedPreferences
             JSONArray data = recoverJSON(string_data); // converts back to JSON
             Rooms room = new Rooms(eid, data); // instantiates Rooms class for database
             bdatabase.daoAccess().insertRoom(room);
         }
-    }
-
-    public void getRoomData(int eid) {
-        String url = "https://jhu.libcal.com/1.1/oauth/token";
-        String url2 = "https://jhu.libcal.com/1.1/space/bookings";
-
-        RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest accessTokenRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-
-            @Override
-            public void onResponse(String response) {
-                String access_token = response.substring(17, 57);
-                JsonArrayRequest dataRequest = new JsonArrayRequest(Request.Method.GET, url2,
-                        null, new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        SharedPreferences.Editor editor = myPrefs.edit();
-                        editor.putString(eid + "", response.toString());
-                        editor.apply();
-                        System.out.println(myPrefs.getAll().toString());
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("failed", error.toString());
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("eid", eid + "");
-                        return params;
-                    }
-
-                    @Override
-                    public Map<String, String> getHeaders() {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("Authorization", "Bearer " + access_token);
-                        return params;
-                    }
-                };
-                queue.add(dataRequest);
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("test", "error");
-            }
-        }) {
-
-            @Override
-            protected Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("grant_type", "client_credentials");
-                params.put("client_id", "471");
-                params.put("client_secret", "c642b905a3c947952dd49285625ee369");
-                return params;
-            }
-        };
-
-        queue.add(accessTokenRequest);
-
     }
 
     public JSONArray recoverJSON(String input) {

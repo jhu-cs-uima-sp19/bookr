@@ -36,7 +36,9 @@ public class LaunchActivity extends AppCompatActivity {
         Context context = getApplicationContext(); // app level storage
         myPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 
-        getDatafromAPI();
+        for (int eid= 7909; eid < 7925; eid++) {
+            getRoomData(eid); //adds data to SharedPreferences for each room
+        }
 
     }
 
@@ -45,7 +47,7 @@ public class LaunchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getDatafromAPI() {
+    public void getRoomData(int eid) {
         String url = "https://jhu.libcal.com/1.1/oauth/token";
         String url2 = "https://jhu.libcal.com/1.1/space/bookings";
 
@@ -55,14 +57,14 @@ public class LaunchActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 String access_token = response.substring(17, 57);
-                JsonArrayRequest dataRequest = new JsonArrayRequest(Request.Method.GET, url2,
+                JsonArrayRequest dataRequest = new JsonArrayRequest(Request.Method.GET, url2 + "?eid=" + eid,
                         null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         SharedPreferences.Editor editor = myPrefs.edit();
-                        editor.putString("Response", response.toString());
+                        editor.putString(eid + "", response.toString());
                         editor.apply();
-                        System.out.println(myPrefs.getAll().toString());
+                        //System.out.println(myPrefs.getAll().toString());
 
                     }
                 }, new Response.ErrorListener() {
@@ -103,4 +105,64 @@ public class LaunchActivity extends AppCompatActivity {
         queue.add(accessTokenRequest);
 
     }
+
+    /*public void getDatafromAPI() {
+        String url = "https://jhu.libcal.com/1.1/oauth/token";
+        String url2 = "https://jhu.libcal.com/1.1/space/bookings";
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest accessTokenRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                String access_token = response.substring(17, 57);
+                JsonArrayRequest dataRequest = new JsonArrayRequest(Request.Method.GET, url2 + "?eid=7915",
+                        null, new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        SharedPreferences.Editor editor = myPrefs.edit();
+                        editor.putString("Response", response.toString());
+                        editor.apply();
+                        System.out.println("here" + response.length());
+                        //System.out.println(myPrefs.getAll().toString());
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("failed", error.toString());
+                    }
+                }) {
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("Authorization", "Bearer " + access_token);
+                        return params;
+                    }
+                };
+                queue.add(dataRequest);
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("test", "error");
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("grant_type", "client_credentials");
+                params.put("client_id", "471");
+                params.put("client_secret", "c642b905a3c947952dd49285625ee369");
+                return params;
+            }
+        };
+
+        queue.add(accessTokenRequest);
+
+    }*/
 }
