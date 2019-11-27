@@ -52,31 +52,56 @@ public class Rooms implements Serializable{
     }
 
     private void instantiate(JSONArray data) throws JSONException {
-        boolean[] array = new boolean[]{this.twelveAMday1, this.twelveThirtyAMday1, this.oneAMday1, this.oneThirtyAMday1,
-                this.twoAMday1, this.twoThirtyAMday1, this.threeAMday1, this.threeThirtyAMday1,
-                this.fourAMday1, this.fourThirtyAMday1, this.fiveAMday1, this.fiveThirtyAMday1,
-                this.sixAMday1, this.sixThirtyAMday1, this.sevenAMday1, this.sevenThirtyAMday1,
-                this.eightAMday1, this.eightThirtyAMday1, this.nineAMday1, this.nineThirtyAMday1,
-                this.tenAMday1, this.tenThirtyAMday1, this.elevenAMday1, this.elevenThirtyAMday1,
-                this.twelvePMday1, this.twelveThirtyPMday1, this.onePMday1, this.oneThirtyPMday1,
-                this.twoPMday1, this.twoThirtyPMday1, this.threePMday1, this.threeThirtyPMday1,
-                this.fourPMday1, this.fourThirtyPMday1, this.fivePMday1, this.fiveThirtyPMday1,
-                this.sixPMday1, this.sixThirtyPMday1, this.sevenPMday1, this.sevenThirtyPMday1,
-                this.eightPMday1, this.eightThirtyPMday1, this.ninePMday1, this.nineThirtyPMday1,
-                this.tenPMday1, this.tenThirtyPMday1, this.elevenPMday1, this.elevenThirtyPMday1,
-                this.twelveAMday2, this.twelveThirtyAMday2, this.oneAMday2, this.oneThirtyAMday2,
-                this.twoAMday2, this.twoThirtyAMday2, this.threeAMday2, this.threeThirtyAMday2,
-                this.fourAMday2, this.fourThirtyAMday2, this.fiveAMday2, this.fiveThirtyAMday2,
-                this.sixAMday2, this.sixThirtyAMday2, this.sevenAMday2, this.sevenThirtyAMday2,
-                this.eightAMday2, this.eightThirtyAMday2, this.nineAMday2, this.nineThirtyAMday2,
-                this.tenAMday2, this.tenThirtyAMday2, this.elevenAMday2, this.elevenThirtyAMday2,
-                this.twelvePMday2, this.twelveThirtyPMday2, this.onePMday2, this.oneThirtyPMday2,
-                this.twoPMday2, this.twoThirtyPMday2, this.threePMday2, this.threeThirtyPMday2,
-                this.fourPMday2, this.fourThirtyPMday2, this.fivePMday2, this.fiveThirtyPMday2,
-                this.sixPMday2, this.sixThirtyPMday2, this.sevenPMday2, this.sevenThirtyPMday2,
-                this.eightPMday2, this.eightThirtyPMday2, this.ninePMday2, this.nineThirtyPMday2,
-                this.tenPMday2, this.tenThirtyPMday2, this.elevenPMday2, this.elevenThirtyPMday2};
-        System.arraycopy(makeBoolArray(data), 0, array, 0, TOTALTIMESLOTS);
+        boolean[] array = makeBoolArray(data);
+        int count = 0;
+        this.twelveAMday1 = array[count]; this.twelveThirtyAMday1 = array[++count];
+        this.oneAMday1 = array[count]; this.oneThirtyAMday1 = array[++count];
+        this.twoAMday1 = array[++count]; this.twoThirtyAMday1 = array[++count];
+        this.threeAMday1 = array[++count]; this.threeThirtyAMday1 = array[++count];
+        this.fourAMday1 = array[++count]; this.fourThirtyAMday1 = array[++count];
+        this.fiveAMday1 = array[++count]; this.fiveThirtyAMday1 = array[++count];
+        this.sixAMday1 = array[++count]; this.sixThirtyAMday1 = array[++count];
+        this.sevenAMday1 = array[++count]; this.sevenThirtyAMday1 = array[++count];
+        this.eightAMday1 = array[++count]; this.eightThirtyAMday1 = array[++count];
+        this.nineAMday1 = array[++count]; this.nineThirtyAMday1 = array[++count];
+        this.tenAMday1 = array[++count]; this.tenThirtyAMday1 = array[++count];
+        this.elevenAMday1 = array[++count]; this.elevenThirtyAMday1 = array[++count];
+        this.twelvePMday1 = array[++count]; this.twelveThirtyPMday1 = array[++count];
+        this.onePMday1 = array[++count]; this.oneThirtyPMday1 = array[++count];
+        this.twoPMday1 = array[++count]; this.twoThirtyPMday1 = array[++count];
+        this.threePMday1 = array[++count]; this.threeThirtyPMday1 = array[++count];
+        this.fourPMday1 = array[++count]; this.fourThirtyPMday1 = array[++count];
+        this.fivePMday1 = array[++count]; this.fiveThirtyPMday1 = array[++count];
+        this.sixPMday1 = array[++count]; this.sixThirtyPMday1 = array[++count];
+        this.sevenPMday1 = array[++count]; this.sevenThirtyPMday1 = array[++count];
+        this.eightPMday1 = array[++count]; this.eightThirtyPMday1 = array[++count];
+        this.ninePMday1 = array[++count]; this.nineThirtyPMday1 = array[++count];
+        this.tenPMday1 = array[++count]; this.tenThirtyPMday1 = array[++count];
+        this.elevenPMday1 = array[++count]; this.elevenThirtyPMday1 = array[++count];
+        this.twelveAMday2 = array[++count]; this.twelveThirtyAMday2 = array[++count];
+        this.oneAMday2 = array[++count]; this.oneThirtyAMday2 = array[++count];
+        this.twoAMday2 = array[++count]; this.twoThirtyAMday2 = array[++count];
+        this.threeAMday2 = array[++count]; this.threeThirtyAMday2 = array[++count];
+        this.fourAMday2 = array[++count]; this.fourThirtyAMday2 = array[++count];
+        this.fiveAMday2 = array[++count]; this.fiveThirtyAMday2 = array[++count];
+        this.sixAMday2 = array[++count]; this.sixThirtyAMday2 = array[++count];
+        this.sevenAMday2 = array[++count]; this.sevenThirtyAMday2 = array[++count];
+        this.eightAMday2 = array[++count]; this.eightThirtyAMday2 = array[++count];
+        this.nineAMday2 = array[++count]; this.nineThirtyAMday2 = array[++count];
+        this.tenAMday2 = array[++count]; this.tenThirtyAMday2 = array[++count];
+        this.elevenAMday2 = array[++count]; this.elevenThirtyAMday2 = array[++count];
+        this.twelvePMday2 = array[++count]; this.twelveThirtyPMday2 = array[++count];
+        this.onePMday2 = array[++count]; this.oneThirtyPMday2 = array[++count];
+        this.twoPMday2 = array[++count]; this.twoThirtyPMday2 = array[++count];
+        this.threePMday2 = array[++count]; this.threeThirtyPMday2 = array[++count];
+        this.fourPMday2 = array[++count]; this.fourThirtyPMday2 = array[++count];
+        this.fivePMday2 = array[++count]; this.fiveThirtyPMday2 = array[++count];
+        this.sixPMday2 = array[++count]; this.sixThirtyPMday2 = array[++count];
+        this.sevenPMday2 = array[++count]; this.sevenThirtyPMday2 = array[++count];
+        this.eightPMday2 = array[++count]; this.eightThirtyPMday2 = array[++count];
+        this.ninePMday2 = array[++count]; this.nineThirtyPMday2 = array[++count];
+        this.tenPMday2 = array[++count]; this.tenThirtyPMday2 = array[++count];
+        this.elevenPMday2 = array[++count]; this.elevenThirtyPMday2 = array[++count];
     }
 
     private boolean[] makeBoolArray(JSONArray data) throws JSONException {
