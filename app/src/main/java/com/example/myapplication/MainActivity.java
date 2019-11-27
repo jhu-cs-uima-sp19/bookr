@@ -17,6 +17,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.amitshekhar.DebugDB;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -56,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
             protected Void doInBackground(Void... arg0) {
                 for (int eid = 7909; eid < 7925; eid++) {
                     String string_data = myPrefs.getString(eid + "", "DNE"); // gets data from SharedPreferences
+                    System.out.println(string_data);
                     JSONArray data = recoverJSON(string_data); // converts back to JSON
                     Rooms room = new Rooms(eid, data); // instantiates Rooms class for database
                     bdatabase.daoAccess().insertRoom(room);
-
                 }
                 return null;
             }
@@ -70,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         new createDatabase().execute();
+        System.out.println(DebugDB.getAddressLog());
 
         Intent intent = getIntent();
         boolean inactive = intent.getBooleanExtra("invisible", true);

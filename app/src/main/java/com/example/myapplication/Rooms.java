@@ -1,24 +1,22 @@
 package com.example.myapplication;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.util.Pair;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import androidx.room.RoomDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 @Entity(tableName = BookingDatabase.TABLE_NAME_BOOKING)
 public class Rooms implements Serializable{
+    private static final int TOTALTIMESLOTS = 96;
     private static final HashMap<String, String> eid2room = new HashMap<String, String>() {{
         put("7909", "BLC 1030");
         put("7910", "BLC 1031");
@@ -44,32 +42,92 @@ public class Rooms implements Serializable{
 
     public Rooms(int eid, JSONArray data) {
         this.eid = eid;
-        instantiate(data);
-    }
-
-    public void instantiate(JSONArray data) {
-        this.name = eid2room.get(eid);
-        Pair[] bookings = new Pair[data.length()]; // remove unnecessary details from JSONArray
+        this.name = eid2room.get("" + eid);
+        //no description, category, or capacity for now
         try {
-            bookings = condense(data);
+            instantiate(data);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        boolean[] boolArray = makeBoolArray(bookings); // convert reduced data to boolean array
     }
 
-    public boolean[] makeBoolArray(Pair[] input) {
-        boolean[] grid = new boolean[96];
-        return grid;
+    private void instantiate(JSONArray data) throws JSONException {
+        boolean[] array = new boolean[]{this.twelveAMday1, this.twelveThirtyAMday1, this.oneAMday1, this.oneThirtyAMday1,
+                this.twoAMday1, this.twoThirtyAMday1, this.threeAMday1, this.threeThirtyAMday1,
+                this.fourAMday1, this.fourThirtyAMday1, this.fiveAMday1, this.fiveThirtyAMday1,
+                this.sixAMday1, this.sixThirtyAMday1, this.sevenAMday1, this.sevenThirtyAMday1,
+                this.eightAMday1, this.eightThirtyAMday1, this.nineAMday1, this.nineThirtyAMday1,
+                this.tenAMday1, this.tenThirtyAMday1, this.elevenAMday1, this.elevenThirtyAMday1,
+                this.twelvePMday1, this.twelveThirtyPMday1, this.onePMday1, this.oneThirtyPMday1,
+                this.twoPMday1, this.twoThirtyPMday1, this.threePMday1, this.threeThirtyPMday1,
+                this.fourPMday1, this.fourThirtyPMday1, this.fivePMday1, this.fiveThirtyPMday1,
+                this.sixPMday1, this.sixThirtyPMday1, this.sevenPMday1, this.sevenThirtyPMday1,
+                this.eightPMday1, this.eightThirtyPMday1, this.ninePMday1, this.nineThirtyPMday1,
+                this.tenPMday1, this.tenThirtyPMday1, this.elevenPMday1, this.elevenThirtyPMday1,
+                this.twelveAMday2, this.twelveThirtyAMday2, this.oneAMday2, this.oneThirtyAMday2,
+                this.twoAMday2, this.twoThirtyAMday2, this.threeAMday2, this.threeThirtyAMday2,
+                this.fourAMday2, this.fourThirtyAMday2, this.fiveAMday2, this.fiveThirtyAMday2,
+                this.sixAMday2, this.sixThirtyAMday2, this.sevenAMday2, this.sevenThirtyAMday2,
+                this.eightAMday2, this.eightThirtyAMday2, this.nineAMday2, this.nineThirtyAMday2,
+                this.tenAMday2, this.tenThirtyAMday2, this.elevenAMday2, this.elevenThirtyAMday2,
+                this.twelvePMday2, this.twelveThirtyPMday2, this.onePMday2, this.oneThirtyPMday2,
+                this.twoPMday2, this.twoThirtyPMday2, this.threePMday2, this.threeThirtyPMday2,
+                this.fourPMday2, this.fourThirtyPMday2, this.fivePMday2, this.fiveThirtyPMday2,
+                this.sixPMday2, this.sixThirtyPMday2, this.sevenPMday2, this.sevenThirtyPMday2,
+                this.eightPMday2, this.eightThirtyPMday2, this.ninePMday2, this.nineThirtyPMday2,
+                this.tenPMday2, this.tenThirtyPMday2, this.elevenPMday2, this.elevenThirtyPMday2};
+        System.arraycopy(makeBoolArray(data), 0, array, 0, TOTALTIMESLOTS);
     }
 
-    public Pair[] condense(JSONArray input) throws JSONException {
-        Pair[] bookings = new Pair[input.length()];
-        for (int i = 0; i < input.length(); i++) {
-            bookings[i] = new Pair(input.getJSONObject(i).getString("toDate"),input.getJSONObject(i).getString("toDate"));
+    private boolean[] makeBoolArray(JSONArray data) throws JSONException {
+        boolean[] time_slots = new boolean[TOTALTIMESLOTS];
+        int index = getCurrentIndex();
+
+        for (int i = index; i < time_slots.length; i++) {
+            time_slots[i] = true;
         }
-        return bookings;
+
+        for (int j = 0; j < data.length(); j++) {
+            JSONObject entry = data.getJSONObject(j);
+            if (entry.getString("status").equals("Confirmed")) {
+                int startIndex = getIndex(entry, "fromDate");
+                int endIndex = getIndex(entry, "toDate");
+                for (int i = startIndex; i < endIndex; i++) {
+                    time_slots[i] = false;
+                }
+            }
+
+        }
+        return time_slots;
+    }
+
+    private int getCurrentIndex() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
+        return getIndex(dateFormat.format(date).substring(0,2),
+                dateFormat.format(date).substring(3), false);
+    }
+
+    private int getIndex(String hour, String min, boolean isDay2) {
+        int index = 2 * Integer.parseInt(hour);
+        if (Integer.parseInt(min) >= 30) {
+            index++;
+        }
+        if (isDay2) {
+            index += 48;
+        }
+        return index;
+    }
+
+    private int getIndex(JSONObject input, String extra) throws JSONException {
+        String hour = input.getString(extra).substring(11,13);
+        String min = input.getString(extra).substring(14,16);
+
+        DateFormat dateFormat2 = new SimpleDateFormat("dd");
+        Date date = new Date();
+        String currentDate = dateFormat2.format(date);
+        String start_date = input.getString(extra).substring(8,10);
+        return getIndex(hour, min, !(start_date == currentDate));
     }
 
     @PrimaryKey(autoGenerate = true)
