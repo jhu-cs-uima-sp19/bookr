@@ -53,9 +53,10 @@ public class Rooms implements Serializable{
 
     private void instantiate(JSONArray data) throws JSONException {
         boolean[] array = makeBoolArray(data);
+
         int count = 0;
         this.twelveAMday1 = array[count]; this.twelveThirtyAMday1 = array[++count];
-        this.oneAMday1 = array[count]; this.oneThirtyAMday1 = array[++count];
+        this.oneAMday1 = array[++count]; this.oneThirtyAMday1 = array[++count];
         this.twoAMday1 = array[++count]; this.twoThirtyAMday1 = array[++count];
         this.threeAMday1 = array[++count]; this.threeThirtyAMday1 = array[++count];
         this.fourAMday1 = array[++count]; this.fourThirtyAMday1 = array[++count];
@@ -115,44 +116,51 @@ public class Rooms implements Serializable{
         for (int j = 0; j < data.length(); j++) {
             JSONObject entry = data.getJSONObject(j);
             if (entry.getString("status").equals("Confirmed")) {
-                int startIndex = getIndex(entry, "fromDate");
-                int endIndex = getIndex(entry, "toDate");
-                for (int i = startIndex; i < endIndex; i++) {
+                int startIndex = getIndex(entry, "fromDate", false);
+                int endIndex = getIndex(entry, "toDate", true);
+                for (int i = startIndex; i <= endIndex; i++) {
                     time_slots[i] = false;
                 }
             }
 
         }
+
+
         return time_slots;
+
     }
 
     private int getCurrentIndex() {
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date();
-        return getIndex(dateFormat.format(date).substring(0,2),
-                dateFormat.format(date).substring(3), false);
+        int currentIndex = getIndex(dateFormat.format(date).substring(0,2),
+                dateFormat.format(date).substring(3), false, true);
+        return currentIndex;
     }
 
-    private int getIndex(String hour, String min, boolean isDay2) {
+    private int getIndex(String hour, String min, boolean isDay2, boolean isEndIndex) {
         int index = 2 * Integer.parseInt(hour);
+        if (isEndIndex) {
+            index--;
+        }
         if (Integer.parseInt(min) >= 30) {
             index++;
         }
         if (isDay2) {
             index += 48;
         }
+
         return index;
     }
 
-    private int getIndex(JSONObject input, String extra) throws JSONException {
+    private int getIndex(JSONObject input, String extra, boolean isEndIndex) throws JSONException {
         String hour = input.getString(extra).substring(11,13);
         String min = input.getString(extra).substring(14,16);
-
         DateFormat dateFormat2 = new SimpleDateFormat("dd");
         Date date = new Date();
         String currentDate = dateFormat2.format(date);
         String start_date = input.getString(extra).substring(8,10);
-        return getIndex(hour, min, !(start_date == currentDate));
+        return getIndex(hour, min, (start_date == currentDate), isEndIndex);
     }
 
     @PrimaryKey(autoGenerate = true)

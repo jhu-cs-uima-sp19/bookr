@@ -64,8 +64,6 @@ public class LaunchActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = myPrefs.edit();
                         editor.putString(eid + "", response.toString());
                         editor.apply();
-                        //System.out.println(myPrefs.getAll().toString());
-
                     }
                 }, new Response.ErrorListener() {
                     @Override

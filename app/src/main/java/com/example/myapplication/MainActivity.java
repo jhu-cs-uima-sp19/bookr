@@ -13,8 +13,10 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.amitshekhar.DebugDB;
@@ -31,6 +33,7 @@ import org.json.JSONException;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 
@@ -57,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             protected Void doInBackground(Void... arg0) {
                 for (int eid = 7909; eid < 7925; eid++) {
                     String string_data = myPrefs.getString(eid + "", "DNE"); // gets data from SharedPreferences
-                    System.out.println(string_data);
                     JSONArray data = recoverJSON(string_data); // converts back to JSON
                     Rooms room = new Rooms(eid, data); // instantiates Rooms class for database
                     bdatabase.daoAccess().insertRoom(room);
@@ -79,37 +81,8 @@ public class MainActivity extends AppCompatActivity {
         if (inactive) {
             top.setVisibility(View.INVISIBLE);
         }
-
-
-        TextView tvw =(TextView)findViewById(R.id.timer);
-        eText = (EditText) findViewById(R.id.editText2);
-        eText.setInputType(InputType.TYPE_NULL);
-        eText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
-                int year = cldr.get(Calendar.YEAR);
-                // date picker dialog
-                picker = new DatePickerDialog(MainActivity.this,
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                eText.setText((monthOfYear + 1) + "/" + dayOfMonth + "/" + year);
-                                eText.setGravity(Gravity.CENTER_VERTICAL);
-                            }
-                        }, year, month, day);
-                picker.show();
-            }
-        });
-//        btnGet=(Button)findViewById(R.id.button1);
-//        btnGet.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                tvw.setText("Selected Date: "+ eText.getText());
-//            }
-//        });
+        //testmethod();
+        //filter();
     }
 
     public void bookRooms(View ib) {
@@ -122,14 +95,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void createDatabase() {
-        for (int eid= 7909; eid < 7925; eid++) {
-            String string_data = myPrefs.getString(eid + "", "DNE"); // gets data from SharedPreferences
-            JSONArray data = recoverJSON(string_data); // converts back to JSON
-            Rooms room = new Rooms(eid, data); // instantiates Rooms class for database
-            bdatabase.daoAccess().insertRoom(room);
-        }
-    }
 
     public JSONArray recoverJSON(String input) {
         //Recover JSONArray from string data
@@ -143,6 +108,40 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return data;
+    }
+    public void testmethod() {
+        Rooms room = bdatabase.daoAccess().fetchById(7910);
+        System.out.println("3:00   " + room.threePMday1);
+        System.out.println("3:30   " + room.threeThirtyPMday1);
+        System.out.println("5:00   " + room.fivePMday1);
+        System.out.println("5:30   " + room.fiveThirtyPMday1);
+    }
+    public void filter() {
+        // Get start time
+        Spinner mySpinner = (Spinner) findViewById(R.id.spinner);
+        String start_time = mySpinner.getSelectedItem().toString();
+
+        // Get duration
+        CheckBox cb1 = (CheckBox) findViewById(R.id.hr5);
+        CheckBox cb2 = (CheckBox) findViewById(R.id.hr1);
+        CheckBox cb3 = (CheckBox) findViewById(R.id.hr15);
+        CheckBox cb4 = (CheckBox) findViewById(R.id.hr2);
+
+        double duration = 0;
+        if (cb1.isChecked()) {
+            duration = 0.5;
+        } else if (cb2.isChecked()) {
+            duration = 1;
+        } else if (cb3.isChecked()) {
+            duration = 1.5;
+        } else if (cb4.isChecked()) {
+            duration = 2;
+        }
+
+
+        System.out.println(start_time + ":" + duration);
+
+
     }
 }
 
