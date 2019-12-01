@@ -44,6 +44,7 @@ public class Rooms implements Serializable{
         this.eid = eid;
         this.name = eid2room.get("" + eid);
         //no description, category, or capacity for now
+
         try {
             instantiate(data);
         } catch (JSONException e) {
@@ -134,7 +135,7 @@ public class Rooms implements Serializable{
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Date date = new Date();
         int currentIndex = getIndex(dateFormat.format(date).substring(0,2),
-                dateFormat.format(date).substring(3), false, true);
+                dateFormat.format(date).substring(3), false, false);
         return currentIndex;
     }
 

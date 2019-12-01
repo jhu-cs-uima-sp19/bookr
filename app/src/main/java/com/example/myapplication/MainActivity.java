@@ -1,44 +1,30 @@
 package com.example.myapplication;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.text.InputType;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import com.amitshekhar.DebugDB;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.Executors;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     BookingDatabase bdatabase;
@@ -136,23 +122,43 @@ public class MainActivity extends AppCompatActivity {
             duration = 2;
         }
 
-        ArrayList<String> eids = new ArrayList<>();
-        List<Rooms> start_rooms = match(start_time);  // rooms available at starttime
-        for (Rooms room : start_rooms) {
-            eids.add(room.eid + "");
+
+
+        ArrayList<Set<String>> matched_rooms = new ArrayList<>(); // rooms that match filter
+        for (int i = 0; i < duration*2; i++) {
+            String time = map1.get(map1.getKey(start_time) + 0.5*i); // uses the bi-directional map
+            List<Rooms> toAdd = match(time);
+            Set<String> eids_matched = new HashSet<String>();
+            for (Rooms room : toAdd) { //extract eid
+                eids_matched.add(room.eid + "");
+            }
+            matched_rooms.add(eids_matched);
         }
-        System.out.println(eids);
-        // filter on duration here
+
+        Set<String> running = null;
+        if (matched_rooms != null) {
+            running = matched_rooms.get(0);
+        }
+
+        for (int j = 1; j < matched_rooms.size(); j++) {
+            if (matched_rooms.get(j) != null) {
+                running.retainAll(matched_rooms.get(j));
+            }
+        }
+
+        ArrayList<String> eids = new ArrayList<>();
+        eids.addAll(running); // THIS IS THE FINAL ARRAYLIST WITH BOTH FILTERS APPLIED!
+
+/*      // This just applies the time filter (backup).
+        ArrayList<String> eids2 = new ArrayList<>();
+        List<Rooms> start_room = match(start_time);
+        for (Rooms room : start_room) {
+            eids2.add(room.eid + "");
+        }*/
         return eids;
 
     }
 
-    // not fully implented yet (Nik)
-    public String addDuration(String start_time, double duration) {
-        Double index = (Double) map1.getKey(start_time);
-        Double end = index + duration;
-        return map1.get(end);
-    }
 
     public void map() {
         map1.put(0.0, "00:00 - Today");
@@ -257,292 +263,292 @@ public class MainActivity extends AppCompatActivity {
         switch(input) {
             case "00:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByTwelveAMday1(true);
-break;
+                break;
             case "00:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByTwelveThirtyAMday1(true);
-break;
+                break;
             case "01:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByoneAMday1(true);
-break;
+                break;
             case "01:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByoneThirtyAMday1(true);
-break;
+                break;
             case "02:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBytwoAMday1(true);
-break;
+                break;
             case "02:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBytwoThirtyAMday1(true);
-break;
+                break;
             case "03:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBythreeAMday1(true);
-break;
+                break;
             case "03:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBythreeThirtyAMday1(true);
-break;
+                break;
             case "04:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByfourAMday1(true);
-break;
+                break;
             case "04:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByfourThirtyAMday1(true);
-break;
+                break;
             case "05:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByfiveAMday1(true);
-break;
+                break;
             case "05:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByfiveThirtyAMday1(true);
-break;
+                break;
             case "06:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBysixAMday1(true);
-break;
+                break;
             case "06:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBysixThirtyAMday1(true);
-break;
+                break;
             case "07:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBysevenAMday1(true);
-break;
+                break;
             case "07:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBysevenThirtyAMday1(true);
-break;
+                break;
             case "08:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByeightAMday1(true);
-break;
+                break;
             case "08:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByeightThirtyAMday1(true);
-break;
+                break;
             case "09:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBynineAMday1(true);
-break;
+                break;
             case "09:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBynineThirtyAMday1(true);
-break;
+                break;
             case "10:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBytenAMday1(true);
-break;
+                break;
             case "10:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBytenThirtyAMday1(true);
-break;
+                break;
             case "11:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByelevenAMday1(true);
-break;
+                break;
             case "11:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByelevenThirtyAMday1(true);
-break;
+                break;
             case "12:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByTwelvePMday1(true);
-break;
+                break;
             case "12:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByTwelveThirtyPMday1(true);
-break;
+                break;
             case "13:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByonePMday1(true);
-break;
+                break;
             case "13:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByoneThirtyPMday1(true);
-break;
+                break;
             case "14:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBytwoPMday1(true);
-break;
+                break;
             case "14:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBytwoThirtyPMday1(true);
-break;
+                break;
             case "15:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBythreePMday1(true);
-break;
+                break;
             case "15:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBythreeThirtyPMday1(true);
-break;
+                break;
             case "16:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByfourPMday1(true);
-break;
+                break;
             case "16:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByfourThirtyPMday1(true);
-break;
+                break;
             case "17:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByfivePMday1(true);
-break;
+                break;
             case "17:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByfiveThirtyPMday1(true);
-break;
+                break;
             case "18:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBysixPMday1(true);
-break;
+                break;
             case "18:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBysixThirtyPMday1(true);
-break;
+                break;
             case "19:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBysevenPMday1(true);
-break;
+                break;
             case "19:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBysevenThirtyPMday1(true);
-break;
+                break;
             case "20:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByeightPMday1(true);
-break;
+                break;
             case "20:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByeightThirtyPMday1(true);
-break;
+                break;
             case "21:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByninePMday1(true);
-break;
+                break;
             case "21:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBynineThirtyPMday1(true);
-break;
+                break;
             case "22:00 - Today":
                 rooms = bdatabase.daoAccess().fetchBytenPMday1(true);
-break;
+                break;
             case "22:30 - Today":
                 rooms = bdatabase.daoAccess().fetchBytenThirtyPMday1(true);
-break;
+                break;
             case "23:00 - Today":
                 rooms = bdatabase.daoAccess().fetchByelevenPMday1(true);
-break;
+                break;
             case "23:30 - Today":
                 rooms = bdatabase.daoAccess().fetchByelevenThirtyPMday1(true);
-break;
+                break;
             case "00:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByTwelveAMday2(true);
-break;
+                break;
             case "00:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByTwelveThirtyAMday2(true);
-break;
+                break;
             case "01:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByoneAMday2(true);
-break;
+                break;
             case "01:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByoneThirtyAMday2(true);
-break;
+                break;
             case "02:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytwoAMday2(true);
-break;
+                break;
             case "02:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytwoThirtyAMday2(true);
-break;
+                break;
             case "03:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBythreeAMday2(true);
-break;
+                break;
             case "03:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBythreeThirtyAMday2(true);
-break;
+                break;
             case "04:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfourAMday2(true);
-break;
+                break;
             case "04:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfourThirtyAMday2(true);
-break;
+                break;
             case "05:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfiveAMday2(true);
-break;
+                break;
             case "05:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfiveThirtyAMday2(true);
-break;
+                break;
             case "06:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysixAMday2(true);
-break;
+                break;
             case "06:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysixThirtyAMday2(true);
-break;
+                break;
             case "07:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysevenAMday2(true);
-break;
+                break;
             case "07:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysevenThirtyAMday2(true);
-break;
+                break;
             case "08:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByeightAMday2(true);
-break;
+                break;
             case "08:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByeightThirtyAMday2(true);
-break;
+                break;
             case "09:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBynineAMday2(true);
-break;
+                break;
             case "09:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBynineThirtyAMday2(true);
-break;
+                break;
             case "10:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytenAMday2(true);
-break;
+                break;
             case "10:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytenThirtyAMday2(true);
-break;
+                break;
             case "11:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByelevenAMday2(true);
-break;
+                break;
             case "11:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByelevenThirtyAMday2(true);
-break;
+                break;
             case "12:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByTwelvePMday2(true);
-break;
+                break;
             case "12:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByTwelveThirtyPMday2(true);
-break;
+                break;
             case "13:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByonePMday2(true);
-break;
+                break;
             case "13:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByoneThirtyPMday2(true);
-break;
+                break;
             case "14:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytwoPMday2(true);
-break;
+                break;
             case "14:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytwoThirtyPMday2(true);
-break;
+                break;
             case "15:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBythreePMday2(true);
-break;
+                break;
             case "15:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBythreeThirtyPMday2(true);
-break;
+                break;
             case "16:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfourPMday2(true);
-break;
+                break;
             case "16:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfourThirtyPMday2(true);
-break;
+                break;
             case "17:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfivePMday2(true);
-break;
+                break;
             case "17:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByfiveThirtyPMday2(true);
-break;
+                break;
             case "18:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysixPMday2(true);
-break;
+                break;
             case "18:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysixThirtyPMday2(true);
-break;
+                break;
             case "19:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysevenPMday2(true);
-break;
+                break;
             case "19:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBysevenThirtyPMday2(true);
-break;
+                break;
             case "20:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByeightPMday2(true);
-break;
+                break;
             case "20:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByeightThirtyPMday2(true);
-break;
+                break;
             case "21:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByninePMday2(true);
-break;
+                break;
             case "21:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBynineThirtyPMday2(true);
-break;
+                break;
             case "22:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytenPMday2(true);
-break;
+                break;
             case "22:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchBytenThirtyPMday2(true);
-break;
+                break;
             case "23:00 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByelevenPMday2(true);
-break;
+                break;
             case "23:30 - Tomorrow":
                 rooms = bdatabase.daoAccess().fetchByelevenThirtyPMday2(true);
-break;
+                break;
             default:
                 
         }
