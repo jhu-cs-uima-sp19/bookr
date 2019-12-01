@@ -161,6 +161,9 @@ public class Rooms implements Serializable{
         Date date = new Date();
         String currentDate = dateFormat2.format(date);
         String start_date = input.getString(extra).substring(8,10);
+        if (eid==7909) {
+            System.out.println("info:   " + hour + ":" + min + "///" + getIndex(hour, min, (start_date == currentDate), isEndIndex));
+        }
         return getIndex(hour, min, (start_date == currentDate), isEndIndex);
     }
 

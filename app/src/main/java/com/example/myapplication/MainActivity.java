@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<String> eids = new ArrayList<>();
         eids.addAll(running); // THIS IS THE FINAL ARRAYLIST WITH BOTH FILTERS APPLIED!
+        System.out.println(eids);
 
 /*      // This just applies the time filter (backup).
         ArrayList<String> eids2 = new ArrayList<>();

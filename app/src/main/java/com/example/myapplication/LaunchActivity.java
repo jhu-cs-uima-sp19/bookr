@@ -19,6 +19,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -42,9 +44,29 @@ public class LaunchActivity extends AppCompatActivity {
 
         for (int eid= 7909; eid < 7925; eid++) {
             getRoomDataDay1(eid); //adds data to SharedPreferences for each room
-            //getRoomDataDay2(eid); //adds data to SharedPreferences for each room
+            getRoomDataDay2(eid); //adds data to SharedPreferences for each room
+            SharedPreferences.Editor editor = myPrefs.edit();
+            String day1 = myPrefs.getString(eid + "p1", "DNE"); // gets data from SharedPreferences
+            String day2 = myPrefs.getString(eid + "p2", "DNE"); // gets data from SharedPreferences
+            String combined = day1.substring(0, day1.length() - 1) + "," + day2.substring(1);
+            editor.putString(eid + "", combined);
+            editor.commit();
         }
 
+    }
+
+    public JSONArray recoverJSON(String input) {
+        //Recover JSONArray from string data
+        JSONArray data = null;
+        if (input != "DNE") {
+            try {
+                data = new JSONArray(input);
+                //System.out.println(data.toString());
+            } catch (JSONException e) {
+                Log.e("error", "could not recover JSONArray from SharedPref");
+            }
+        }
+        return data;
     }
 
     public void goToFilters(View view) {
@@ -58,7 +80,6 @@ public class LaunchActivity extends AppCompatActivity {
         String url2 = "https://jhu.libcal.com/1.1/space/bookings";
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        //System.out.println(url2 + "?eid=" + eid);
 
         StringRequest accessTokenRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
@@ -72,7 +93,7 @@ public class LaunchActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                        // System.out.println("got to data query");
                         SharedPreferences.Editor editor = myPrefs.edit();
-                        editor.putString(eid + "", response.toString());
+                        editor.putString(eid + "p1", response.toString());
                         editor.apply();
                     }
                 }, new Response.ErrorListener() {
@@ -144,6 +165,7 @@ public class LaunchActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = myPrefs.edit();
                         editor.putString(eid + "p2", response.toString());
                         editor.apply();
+                        //System.out.println(response.toString());
                     }
                 }, new Response.ErrorListener() {
                     @Override
