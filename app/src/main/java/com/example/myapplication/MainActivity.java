@@ -75,8 +75,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bookRooms(View ib) {
-        filter();
+        ArrayList<String> results = filter();
         Intent intent = new Intent(this, SwipeRoomsActivity.class);
+        intent.putExtra("filtered_eids", results);
         startActivity(intent);
     }
 
