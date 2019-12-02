@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SwipeRoomsActivity">
 
     <androidx.viewpager.widget.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.viewpager.widget.PagerTitleStrip
             android:id="@+id/pager_title_strip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="75dp"
             android:layout_gravity="top"
             android:background="#33b5e5"
             android:fontFamily="@font/roboto"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:textColor="@android:color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp" />
+            android:textStyle="bold" />
 
     </androidx.viewpager.widget.ViewPager>
 
@@ -35,13 +38,12 @@
         android:clickable="true"
         android:fontFamily="@font/roboto"
         android:onClick="confirmBooking"
-        android:text="Book Room"
+        android:text="@string/book"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/pager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/pager"
-        app:layout_constraintVertical_bias="1.0" />
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -122,6 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="144dp"
         android:layout_marginBottom="28dp"
+        android:checked="true"
         android:text="0.5 hr"
         app:layout_constraintBottom_toTopOf="@+id/hr15"
         app:layout_constraintEnd_toStartOf="@+id/hr1" />

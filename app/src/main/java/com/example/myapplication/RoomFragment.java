@@ -18,7 +18,7 @@ public class RoomFragment extends Fragment {
         // The last two arguments ensure LayoutParams are inflated
         // properly.
         View rootView = inflater.inflate(
-                R.layout.activity_rooms, container, false);
+                R.layout.test_layout, container, false);
         Bundle args = getArguments();
         //((TextView) rootView.findViewById(android.R.id.text1)).setText(
         //        Integer.toString(args.getInt(ARG_OBJECT)));
