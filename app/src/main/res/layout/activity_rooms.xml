@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:background="#ebebeb"
+    <ScrollView
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SwipeRoomsActivity">
+        android:background="#ebebeb"
+        tools:context=".SwipeRoomsActivity"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="201dp">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+
+            <ImageButton
+                android:id="@+id/tenamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="10.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/elevenamr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer10am"
+                app:layout_constraintTop_toBottomOf="@+id/nineamr"
+                app:srcCompat="@color/darkRed" />
 
             <ImageButton
                 android:id="@+id/tenaml"
@@ -24,7 +48,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/elevenaml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer2"
+                app:layout_constraintEnd_toStartOf="@+id/spacer10am"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tenam"
                 app:layout_constraintTop_toBottomOf="@+id/nineaml"
@@ -41,7 +65,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/twelvepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer5"
+                app:layout_constraintEnd_toStartOf="@+id/spacer11am"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/oneam"
                 app:layout_constraintTop_toBottomOf="@+id/tenaml"
@@ -58,26 +82,10 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/threepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer8"
+                app:layout_constraintEnd_toStartOf="@+id/spacer2pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/twopm"
                 app:layout_constraintTop_toBottomOf="@+id/onepml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/eightamr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="8.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/nineamr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/spacer"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
@@ -91,21 +99,40 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/nineaml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer"
+                app:layout_constraintEnd_toStartOf="@+id/spacer8am"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/eightam"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/spacer"
+                android:id="@+id/spacer8am"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer3"
+                app:layout_constraintBottom_toTopOf="@+id/spacer9am"
                 app:layout_constraintEnd_toStartOf="@+id/eightamr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/eightaml"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageButton
+                android:id="@+id/eightamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="8.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/nineamr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/spacer8am"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
                 android:id="@+id/eightam"
@@ -120,7 +147,8 @@
                 app:layout_constraintHorizontal_bias="0.2"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
             <ImageButton
                 android:id="@+id/fourpmr"
@@ -135,7 +163,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer10"
+                app:layout_constraintStart_toEndOf="@+id/spacer4pm"
                 app:layout_constraintTop_toBottomOf="@+id/threepmr"
                 app:srcCompat="@color/darkRed" />
 
@@ -152,7 +180,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/fourpmr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer9"
+                app:layout_constraintStart_toEndOf="@+id/spacer3pm"
                 app:layout_constraintTop_toBottomOf="@+id/twopmr"
                 app:srcCompat="@color/darkRed" />
 
@@ -169,7 +197,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/threepmr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer8"
+                app:layout_constraintStart_toEndOf="@+id/spacer2pm"
                 app:layout_constraintTop_toBottomOf="@+id/onepmr"
                 app:srcCompat="@color/darkRed" />
 
@@ -186,7 +214,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/twopmr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer7"
+                app:layout_constraintStart_toEndOf="@+id/spacer1pm"
                 app:layout_constraintTop_toBottomOf="@+id/twelvepmr"
                 app:srcCompat="@color/darkRed" />
 
@@ -203,7 +231,7 @@
                 app:layout_constraintBottom_toTopOf="@+id/onepmr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer6"
+                app:layout_constraintStart_toEndOf="@+id/spacer12pm"
                 app:layout_constraintTop_toBottomOf="@+id/elevenamr"
                 app:srcCompat="@color/darkRed" />
 
@@ -220,42 +248,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/twelvepmr"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer5"
+                app:layout_constraintStart_toEndOf="@+id/spacer11am"
                 app:layout_constraintTop_toBottomOf="@+id/tenamr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/tenamr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="10.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/elevenamr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer2"
-                app:layout_constraintTop_toBottomOf="@+id/nineamr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/nineamr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="9.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/tenamr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer3"
-                app:layout_constraintTop_toBottomOf="@+id/eightamr"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
@@ -269,7 +263,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spacer10"
+                app:layout_constraintEnd_toStartOf="@+id/spacer4pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fourpm"
                 app:layout_constraintTop_toBottomOf="@+id/threepml"
@@ -286,7 +280,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/tenaml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer3"
+                app:layout_constraintEnd_toStartOf="@+id/spacer9am"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/nineam"
                 app:layout_constraintTop_toBottomOf="@+id/eightaml"
@@ -303,7 +297,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/onepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer6"
+                app:layout_constraintEnd_toStartOf="@+id/spacer12pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/twelveam"
                 app:layout_constraintTop_toBottomOf="@+id/elevenaml"
@@ -320,7 +314,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/twopml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer7"
+                app:layout_constraintEnd_toStartOf="@+id/spacer1pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/onepm"
                 app:layout_constraintTop_toBottomOf="@+id/twelvepml"
@@ -337,7 +331,7 @@
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/fourpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer9"
+                app:layout_constraintEnd_toStartOf="@+id/spacer3pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/threepm"
                 app:layout_constraintTop_toBottomOf="@+id/twopml"
@@ -472,7 +466,7 @@
                 android:paddingBottom="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer4"
+                app:layout_constraintStart_toEndOf="@+id/spacer5pm"
                 app:layout_constraintTop_toBottomOf="@id/fourpmr"
                 app:srcCompat="@color/darkRed" />
 
@@ -496,7 +490,7 @@
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
-                android:text="5pm"
+                android:text="6pm"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toStartOf="@+id/sixpml"
                 app:layout_constraintHorizontal_bias="0.2"
@@ -514,7 +508,7 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintEnd_toStartOf="@+id/spacer11"
+                app:layout_constraintEnd_toStartOf="@+id/spacer6pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/sixpm"
                 app:layout_constraintTop_toBottomOf="@id/fivepml"
@@ -532,9 +526,348 @@
                 android:paddingBottom="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer11"
+                app:layout_constraintStart_toEndOf="@+id/spacer6pm"
                 app:layout_constraintTop_toBottomOf="@id/fivepmr"
                 app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/spacer6pm"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/sixpmr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/sixpml"
+                app:layout_constraintTop_toBottomOf="@+id/spacer5pm" />
+
+            <TextView
+                android:id="@+id/eightpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="8pm"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/eightpml"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sevenpm" />
+
+            <ImageButton
+                android:id="@+id/eightpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/spacer8pm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/eightpm"
+                app:layout_constraintTop_toBottomOf="@id/sevenpml"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/eightpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer8pm"
+                app:layout_constraintTop_toBottomOf="@id/sevenpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/twelveam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="12am"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/twelveaml2"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/elevenpm" />
+
+            <ImageButton
+                android:id="@+id/twelveaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/spacer12am2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/twelveam2"
+                app:layout_constraintTop_toBottomOf="@id/elevenpml"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twelveamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer12am2"
+                app:layout_constraintTop_toBottomOf="@id/elevenpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/spacer12am2"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/twelveamr2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/twelveaml2"
+                app:layout_constraintTop_toBottomOf="@+id/spacer11pm" />
+
+            <TextView
+                android:id="@+id/elevenpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="11pm"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/elevenpml"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tenpm" />
+
+            <ImageButton
+                android:id="@+id/elevenpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/spacer11pm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/elevenpm"
+                app:layout_constraintTop_toBottomOf="@id/tenpml"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/elevenpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer11pm"
+                app:layout_constraintTop_toBottomOf="@id/tenpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/spacer11pm"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/elevenpmr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/elevenpml"
+                app:layout_constraintTop_toBottomOf="@+id/spacer10pm" />
+
+            <TextView
+                android:id="@+id/tenpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="10pm"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/tenpml"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ninepm" />
+
+            <ImageButton
+                android:id="@+id/tenpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/spacer10pm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tenpm"
+                app:layout_constraintTop_toBottomOf="@id/ninepml"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/tenpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer10pm"
+                app:layout_constraintTop_toBottomOf="@id/ninepmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/spacer10pm"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/tenpmr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tenpml"
+                app:layout_constraintTop_toBottomOf="@+id/spacer9pm" />
+
+            <TextView
+                android:id="@+id/ninepm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="9pm"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/ninepml"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eightpm" />
+
+            <ImageButton
+                android:id="@+id/ninepml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/spacer9pm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ninepm"
+                app:layout_constraintTop_toBottomOf="@id/eightpml"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/ninepmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer9pm"
+                app:layout_constraintTop_toBottomOf="@id/eightpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/spacer9pm"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/ninepmr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ninepml"
+                app:layout_constraintTop_toBottomOf="@+id/spacer8pm" />
+
+            <TextView
+                android:id="@+id/spacer8pm"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/eightpmr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/eightpml"
+                app:layout_constraintTop_toBottomOf="@+id/spacer7pm" />
+
+            <TextView
+                android:id="@+id/sevenpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="7pm"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/sevenpml"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sixpm" />
+
+            <ImageButton
+                android:id="@+id/sevenpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toStartOf="@+id/spacer7pm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/sevenpm"
+                app:layout_constraintTop_toBottomOf="@id/sixpml"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/sevenpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer7pm"
+                app:layout_constraintTop_toBottomOf="@id/sixpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/spacer7pm"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                app:layout_constraintEnd_toStartOf="@+id/sevenpmr"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/sevenpml"
+                app:layout_constraintTop_toBottomOf="@+id/spacer6pm" />
 
             <ImageButton
                 android:id="@+id/fivepml"
@@ -546,121 +879,131 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintEnd_toStartOf="@+id/spacer4"
+                app:layout_constraintEnd_toStartOf="@+id/spacer5pm"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fivepm"
                 app:layout_constraintTop_toBottomOf="@id/fourpml"
                 app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/spacer4"
+                android:id="@+id/spacer5pm"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
                 app:layout_constraintEnd_toStartOf="@+id/fivepmr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fivepml"
-                app:layout_constraintTop_toBottomOf="@id/spacer10" />
+                app:layout_constraintTop_toBottomOf="@id/spacer4pm" />
 
             <TextView
-                android:id="@+id/spacer2"
+                android:id="@+id/spacer10am"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer5"
+                app:layout_constraintBottom_toTopOf="@+id/spacer11am"
                 app:layout_constraintEnd_toStartOf="@+id/tenamr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tenaml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer3" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer9am" />
 
             <TextView
-                android:id="@+id/spacer10"
+                android:id="@+id/spacer4pm"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/fourpmr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/fourpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer9" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer3pm" />
 
             <TextView
-                android:id="@+id/spacer11"
+                android:id="@+id/spacer3pm"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintEnd_toStartOf="@+id/sixpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/sixpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer4" />
-
-            <TextView
-                android:id="@+id/spacer9"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer10"
+                app:layout_constraintBottom_toTopOf="@+id/spacer4pm"
                 app:layout_constraintEnd_toStartOf="@+id/threepmr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/threepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer8" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer2pm" />
 
             <TextView
-                android:id="@+id/spacer8"
+                android:id="@+id/spacer2pm"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer9"
+                app:layout_constraintBottom_toTopOf="@+id/spacer3pm"
                 app:layout_constraintEnd_toStartOf="@+id/twopmr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/twopml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer7" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer1pm" />
 
             <TextView
-                android:id="@+id/spacer7"
+                android:id="@+id/spacer1pm"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer8"
+                app:layout_constraintBottom_toTopOf="@+id/spacer2pm"
                 app:layout_constraintEnd_toStartOf="@+id/onepmr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/onepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer6" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer12pm" />
 
             <TextView
-                android:id="@+id/spacer6"
+                android:id="@+id/spacer12pm"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer7"
+                app:layout_constraintBottom_toTopOf="@+id/spacer1pm"
                 app:layout_constraintEnd_toStartOf="@+id/twelvepmr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/twelvepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer5" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer11am" />
 
             <TextView
-                android:id="@+id/spacer5"
+                android:id="@+id/spacer11am"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer6"
+                app:layout_constraintBottom_toTopOf="@+id/spacer12pm"
                 app:layout_constraintEnd_toStartOf="@+id/elevenamr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/elevenaml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer2" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer10am" />
 
             <TextView
-                android:id="@+id/spacer3"
+                android:id="@+id/spacer9am"
                 android:layout_width="20dp"
                 android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer2"
+                app:layout_constraintBottom_toTopOf="@+id/spacer10am"
                 app:layout_constraintEnd_toStartOf="@+id/nineamr"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/nineaml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer" />
+                app:layout_constraintTop_toBottomOf="@+id/spacer8am" />
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="160dp"
-                android:layout_height="201dp"
+                android:layout_width="140dp"
+                android:layout_height="210dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.996"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.458"
+                app:layout_constraintVertical_bias="0.103"
                 app:srcCompat="@drawable/legend" />
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+            <ImageButton
+                android:id="@+id/nineamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="9.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/tenamr"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/spacer9am"
+                app:layout_constraintTop_toBottomOf="@+id/eightamr"
+                app:srcCompat="@color/darkRed" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
