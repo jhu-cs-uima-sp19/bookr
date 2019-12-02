@@ -40,9 +40,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        // create database
-        bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
-                BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        // create singleton database
+        //bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
+        //        BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        bdatabase = BookingDatabase.getBookingDatabase(getApplicationContext());
 
         class createDatabase extends AsyncTask<Void, Void, Void> // Need to run database inserts in async thread
         {
@@ -77,7 +78,16 @@ public class MainActivity extends AppCompatActivity {
     public void bookRooms(View ib) {
         ArrayList<String> results = filter();
         Intent intent = new Intent(this, SwipeRoomsActivity.class);
-        intent.putExtra("filtered_eids", results);
+        //intent.putExtra("filtered_eids", results);
+
+        //save in SharedPrefs so we can access filtered list from RoomPagerAdapter
+        SharedPreferences.Editor editor = myPrefs.edit();
+        editor.putInt("num_rooms", results.size());
+        for (int i = 0; i < results.size(); i++) {
+            editor.putString("Room_"+i, results.get(i));
+        }
+        editor.commit();
+
         startActivity(intent);
     }
 
