@@ -45,12 +45,6 @@ public class LaunchActivity extends AppCompatActivity {
         for (int eid= 7909; eid < 7925; eid++) {
             getRoomDataDay1(eid); //adds data to SharedPreferences for each room
             getRoomDataDay2(eid); //adds data to SharedPreferences for each room
-            SharedPreferences.Editor editor = myPrefs.edit();
-            String day1 = myPrefs.getString(eid + "p1", "DNE"); // gets data from SharedPreferences
-            String day2 = myPrefs.getString(eid + "p2", "DNE"); // gets data from SharedPreferences
-            String combined = day1.substring(0, day1.length() - 1) + "," + day2.substring(1);
-            editor.putString(eid + "", combined);
-            editor.commit();
         }
 
     }

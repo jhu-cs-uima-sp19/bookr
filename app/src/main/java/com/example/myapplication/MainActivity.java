@@ -39,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-
+        SharedPreferences.Editor editor = myPrefs.edit();
+        for (int eid= 7909; eid < 7925; eid++) {
+            String day1 = myPrefs.getString(eid + "p1", "DNE"); // gets data from SharedPreferences
+            String day2 = myPrefs.getString(eid + "p2", "DNE"); // gets data from SharedPreferences
+            String combined = day1.substring(0, day1.length() - 1) + "," + day2.substring(1);
+            editor.putString(eid + "", combined);
+        }
+        editor.commit();
         // create singleton database
         //bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
         //        BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
