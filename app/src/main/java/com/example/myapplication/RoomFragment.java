@@ -12,6 +12,7 @@ import org.joda.time.Minutes;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import androidx.fragment.app.Fragment;
@@ -22,7 +23,7 @@ import androidx.room.Room;
 public class RoomFragment extends Fragment {
     public static final String ARG_OBJECT = "eid";
     private BookingDatabase bookingDatabase;
-    private ImageButton[] buttons;
+    private static ImageButton[] buttons;
 
     // Store instance variables
     private int eid;
@@ -39,12 +40,99 @@ public class RoomFragment extends Fragment {
         eid = Integer.parseInt(args.getString(ARG_OBJECT));
         bookingDatabase = BookingDatabase.getBookingDatabase(getActivity());
         Rooms room = bookingDatabase.daoAccess().fetchById(eid);
-        //filter 15:00, tomorrow
 
         boolean[] availabilities = createBooleanArray(room);
+        createButtonArray(rootView);
         colorButtons(rootView, availabilities);
 
+        System.out.println(rootView + " frag");
         return rootView;
+    }
+
+    private void colorButtons(View view, boolean[] input) {
+        for (int i = 0; i < input.length; i++) {
+            // Set color and OnClick for corresponding buttons
+            if (input[i]) {
+                ImageButton button = buttons[i];
+                button.setImageResource(R.color.lightGreen);
+                button.setTag(R.color.lightGreen);
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v)
+                    {
+                        ImageButton button = view.findViewById(v.getId());
+                        if (button.getTag().equals(R.color.blue)) {
+                            button.setImageResource(R.color.lightGreen);
+                            button.setTag(R.color.lightGreen);
+                        }
+                        else {
+                            button.setImageResource(R.color.blue);
+                            button.setTag(R.color.blue);
+                        }
+                    }
+                });
+            }
+            else {
+                ImageButton button = buttons[i];
+                // Check if its before current time or not
+                /*
+                DateTime dt = new DateTime();
+                DateTime back_date = new DateTime("2019-11-11T08:00:00.000");
+                Duration duration = new Duration(back_date, dt); */
+                int cur_index = getCurrentIndex();//Minutes.minutesBetween(back_date, dt).getMinutes()/30;
+
+                if (i > cur_index) {
+                    button.setImageResource(R.color.darkRed);
+                    button.setTag(R.color.darkRed);
+                    button.setOnClickListener(null);
+                } else {
+                    button.setImageResource(R.color.inactive);
+                    button.setTag(R.color.inactive);
+                    button.setOnClickListener(null);
+                }
+            }
+        }
+
+    }
+
+    public static ArrayList<String> getSelection() {
+        ArrayList<String> selections = new ArrayList<>();
+        System.out.println(R.color.blue + " blue");
+        System.out.println(R.color.darkRed + " red");
+        System.out.println(R.color.lightGreen + " green");
+        System.out.println(R.color.inactive + " gray");
+        // find the blue ones!
+        for (ImageButton button : buttons) {
+            System.out.println(button.getTag() + "");
+            if (button.getTag().equals(R.color.blue)) {
+                System.out.println("got it");
+                selections.add(button.getId() + "");
+            }
+        }
+        return selections;
+    }
+
+    private int getCurrentIndex() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
+        int currentIndex = getIndex(dateFormat.format(date).substring(0,2),
+                dateFormat.format(date).substring(3), false, false);
+        return currentIndex;
+    }
+
+    private int getIndex(String hour, String min, boolean isDay2, boolean isEndIndex) {
+        int index = 2 * Integer.parseInt(hour);
+        if (isEndIndex) {
+            index--;
+        }
+        if (Integer.parseInt(min) >= 30) {
+            index++;
+        }
+        if (isDay2) {
+            index += 48;
+        }
+
+        return index;
     }
 
     private boolean[] createBooleanArray(Rooms room) {
@@ -100,7 +188,7 @@ public class RoomFragment extends Fragment {
         return b;
     }
 
-    private void colorButtons(View view, boolean[] input) {
+    private void createButtonArray(View view) {
         buttons = new ImageButton[]{view.findViewById(R.id.twelveaml), view.findViewById(R.id.twelveamr),
                 view.findViewById(R.id.oneaml), view.findViewById(R.id.oneamr),
                 view.findViewById(R.id.twoaml), view.findViewById(R.id.twoamr),
@@ -150,73 +238,5 @@ public class RoomFragment extends Fragment {
                 view.findViewById(R.id.tenpml2), view.findViewById(R.id.tenpmr2),
                 view.findViewById(R.id.elevenpml2), view.findViewById(R.id.elevenpmr2),
         };
-
-        for (int i = 0; i < input.length; i++) {
-            // Set color and OnClick for corresponding buttons
-            if (input[i]) {
-                ImageButton button = buttons[i];
-                button.setImageResource(R.color.lightGreen);
-                button.setTag(R.color.lightGreen);
-
-                button.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v)
-                    {
-                        ImageButton button = view.findViewById(v.getId());
-                        if (button.getTag().equals(R.color.blue)) {
-                            button.setImageResource(R.color.lightGreen);
-                            button.setTag(R.color.lightGreen);
-                        }
-                        else {
-                            button.setImageResource(R.color.blue);
-                            button.setTag(R.color.blue);
-                        }
-                    }
-                });
-            }
-            else {
-                ImageButton button = buttons[i];
-                // Check if its before current time or not
-                /*
-                DateTime dt = new DateTime();
-                DateTime back_date = new DateTime("2019-11-11T08:00:00.000");
-                Duration duration = new Duration(back_date, dt); */
-                int cur_index = getCurrentIndex();//Minutes.minutesBetween(back_date, dt).getMinutes()/30;
-
-                if (i > cur_index) {
-                    button.setImageResource(R.color.darkRed);
-                    button.setTag(R.color.darkRed);
-                    button.setOnClickListener(null);
-                } else {
-                    button.setImageResource(R.color.inactive);
-                    button.setTag(R.color.inactive);
-                    button.setOnClickListener(null);
-                }
-            }
-        }
-
     }
-
-    private int getCurrentIndex() {
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        Date date = new Date();
-        int currentIndex = getIndex(dateFormat.format(date).substring(0,2),
-                dateFormat.format(date).substring(3), false, false);
-        return currentIndex;
-    }
-
-    private int getIndex(String hour, String min, boolean isDay2, boolean isEndIndex) {
-        int index = 2 * Integer.parseInt(hour);
-        if (isEndIndex) {
-            index--;
-        }
-        if (Integer.parseInt(min) >= 30) {
-            index++;
-        }
-        if (isDay2) {
-            index += 48;
-        }
-
-        return index;
-    }
-
 }

@@ -5,11 +5,16 @@ import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.amitshekhar.DebugDB;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SwipeRoomsActivity extends FragmentActivity {
@@ -17,12 +22,15 @@ public class SwipeRoomsActivity extends FragmentActivity {
     // representing an object in the collection.
     RoomPagerAdapter pagerAdapter;
     ViewPager mViewPager;
+    SharedPreferences myPrefs;
 
     public void onCreate(Bundle savedInstanceState) {
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
+
+        myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         pagerAdapter = new RoomPagerAdapter(getSupportFragmentManager());
         pagerAdapter.setContext(getApplicationContext());
@@ -32,6 +40,29 @@ public class SwipeRoomsActivity extends FragmentActivity {
     }
 
     public void confirmBooking(View ib) {
-        //nothing for now
+        int position = mViewPager.getCurrentItem();
+        String room_name = Rooms.eid2room.get(myPrefs.getString("Room_" + position, null));
+        ArrayList<String> selections = RoomFragment.getSelection();
+        //RoomFragment current_frag = (RoomFragment) pagerAdapter.getItem(position);
+        //ArrayList<String> selections = current_frag.getSelection();
+/*
+        for(int i = 0; i < selections.size(); i++) {
+            System.out.println(selections.get(i));
+        }
+
+        Intent intent = new Intent(this, ConfirmPage.class);
+        intent.putStringArrayListExtra("selections", selections);
+        intent.putExtra("room_num", room_name);
+
+        if ((selections.size() == 0) || (selections.size() > 4)) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Invalid Request",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            startActivity(intent);
+        }
+
+         */
     }
 }
