@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.commit();
 
-        //initializePicker();
         // create singleton database
         //bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
         //        BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
@@ -579,13 +578,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return rooms;
     }
-    public void initializePicker() {
-        NumberPicker picker = findViewById(R.id.number_picker);
-        Resources res = getResources();
-        String[] data = res.getStringArray(R.array.spinnerItems);
-        picker.setMinValue(0);
-        picker.setMaxValue(data.length-1);
-        picker.setDisplayedValues(data);
-    }
+
 }
 
