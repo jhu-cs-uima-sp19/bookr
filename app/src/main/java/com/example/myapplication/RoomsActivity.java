@@ -418,11 +418,9 @@ public class RoomsActivity extends AppCompatActivity {
                 findViewById(R.id.fourpml), findViewById(R.id.fourpmr),
                 findViewById(R.id.fivepml), findViewById(R.id.fivepmr)
         };
-        // initialize time slots from api
 
         for (int i = 0; i < input.length; i++) {
             // Set color and OnClick for corresponding buttons
-            //if (i >= lowerBound && i <= upperBound && input[i]) {
             if (input[i]) {
                 ImageButton button = buttons[i];
                 button.setImageResource(R.color.lightGreen);
@@ -443,7 +441,6 @@ public class RoomsActivity extends AppCompatActivity {
                     }
                 });
             }
-            //else if (i >= lowerBound && i <= upperBound) {
             else {
                 ImageButton button = buttons[i];
                 // Check if its before current time or not
@@ -463,6 +460,5 @@ public class RoomsActivity extends AppCompatActivity {
                 }
             }
         }
-
     }
 }
