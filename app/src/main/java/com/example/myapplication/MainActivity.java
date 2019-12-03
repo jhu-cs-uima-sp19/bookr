@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
             editor.putString(eid + "", combined);
         }
         editor.commit();
+
+        //initializePicker();
         // create singleton database
         //bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
         //        BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
@@ -574,6 +578,14 @@ public class MainActivity extends AppCompatActivity {
                 
         }
         return rooms;
+    }
+    public void initializePicker() {
+        NumberPicker picker = findViewById(R.id.number_picker);
+        Resources res = getResources();
+        String[] data = res.getStringArray(R.array.spinnerItems);
+        picker.setMinValue(0);
+        picker.setMaxValue(data.length-1);
+        picker.setDisplayedValues(data);
     }
 }
 
