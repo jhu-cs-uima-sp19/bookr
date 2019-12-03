@@ -25,11 +25,11 @@ public class RoomFragment extends Fragment {
         View rootView = inflater.inflate(
                 R.layout.activity_rooms, container, false);
         Bundle args = getArguments();
-/*
+
         eid = Integer.parseInt(args.getString(ARG_OBJECT));
         bookingDatabase = BookingDatabase.getBookingDatabase(getActivity());
         Rooms room = bookingDatabase.daoAccess().fetchById(eid);
-*/
+        //filter 15:00, tomorrow
         return rootView;
     }
 }

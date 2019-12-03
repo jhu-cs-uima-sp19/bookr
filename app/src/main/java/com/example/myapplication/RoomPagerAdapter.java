@@ -28,7 +28,7 @@ public class RoomPagerAdapter extends FragmentStatePagerAdapter {
     // Returns total number of pages
     @Override
     public int getCount() {
-        return myPrefs.getInt("num_items",1);
+        return myPrefs.getInt("num_rooms",1);
     }
 
     // Returns the fragment to display for that page
@@ -43,6 +43,6 @@ public class RoomPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "OBJECT " + (position + 1);
+        return Rooms.eid2room.get(myPrefs.getString("Room_" + position, null));
     }
 }

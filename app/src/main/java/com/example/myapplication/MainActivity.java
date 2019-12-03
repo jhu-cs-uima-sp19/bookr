@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         new createDatabase().execute();
-        System.out.println(DebugDB.getAddressLog());
+        //System.out.println(DebugDB.getAddressLog());
 
         Intent intent = getIntent();
         boolean inactive = intent.getBooleanExtra("invisible", true);
@@ -93,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < results.size(); i++) {
             editor.putString("Room_"+i, results.get(i));
         }
-        editor.commit();
+        editor.apply();
+
+        //Error handling for when num_rooms is 0!!!
 
         startActivity(intent);
     }
