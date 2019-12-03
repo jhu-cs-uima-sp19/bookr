@@ -17,7 +17,7 @@ import org.json.JSONObject;
 @Entity(tableName = BookingDatabase.TABLE_NAME_BOOKING)
 public class Rooms implements Serializable{
     private static final int TOTALTIMESLOTS = 96;
-    private static final HashMap<String, String> eid2room = new HashMap<String, String>() {{
+    public static final HashMap<String, String> eid2room = new HashMap<String, String>() {{
         put("7909", "BLC 1030");
         put("7910", "BLC 1031");
         put("7911", "BLC 2003");
