@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -13,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -93,14 +95,23 @@ public class MainActivity extends AppCompatActivity {
         //save in SharedPrefs so we can access filtered list from RoomPagerAdapter
         SharedPreferences.Editor editor = myPrefs.edit();
         editor.putInt("num_rooms", results.size());
+
         for (int i = 0; i < results.size(); i++) {
             editor.putString("Room_"+i, results.get(i));
         }
         editor.apply();
 
         //Error handling for when num_rooms is 0!!!
+        if (results.size() == 0) {
+            Context context = getApplicationContext();
+            CharSequence text = "No rooms available";
+            int duration = Toast.LENGTH_SHORT;
 
-        startActivity(intent);
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        } else {
+            startActivity(intent);
+        }
     }
 
     public void editRooms(View ib) {
@@ -574,7 +585,7 @@ public class MainActivity extends AppCompatActivity {
                 rooms = bdatabase.daoAccess().fetchByelevenThirtyPMday2(true);
                 break;
             default:
-                
+
         }
         return rooms;
     }

@@ -1,24 +1,336 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ebebeb"
+    tools:context=".SwipeRoomsActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="60dp">
 
-    <ScrollView
-        android:id="@+id/background"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ebebeb"
-        tools:context=".SwipeRoomsActivity"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-72dp">
+        android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginEnd="70dp"
+            android:columnCount="3"
+            android:rowCount="48"
+            android:useDefaultMargins="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/fill"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/minute00"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text=":00"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/minute30"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text=":30"
+                android:textSize="24sp" />
+
+
+            <TextView
+                android:id="@+id/twelveam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="12am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twelveaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/twelveamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/oneam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="1am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/oneaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/oneamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/twoam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="2am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twoaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twoamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/threeam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="3am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/threeaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/threeamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/fouram"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="4am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fouraml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/fouramr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/fiveam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="5am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fiveaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/fiveamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/sixam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="6am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/sixaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/sixamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/sevenam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="7am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/sevenaml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/sevenamr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/eightam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="8am"
+                android:textSize="24sp" />
 
             <ImageButton
                 android:id="@+id/eightaml"
@@ -30,603 +342,7 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/nineaml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer8am"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/eightam"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/tenaml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="10"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/elevenaml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer10am"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tenam"
-                app:layout_constraintTop_toBottomOf="@+id/nineaml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/elevenaml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="11"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/twelvepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer11am"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/oneam"
-                app:layout_constraintTop_toBottomOf="@+id/tenaml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/twopml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="2"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/threepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer2pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twopm"
-                app:layout_constraintTop_toBottomOf="@+id/onepml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/fourpml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="4"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/fivepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer4pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/fourpm"
-                app:layout_constraintTop_toBottomOf="@+id/threepml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/nineaml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="9"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/tenaml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer9am"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/nineam"
-                app:layout_constraintTop_toBottomOf="@+id/eightaml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/twelvepml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="12"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/onepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer12pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twelveam"
-                app:layout_constraintTop_toBottomOf="@+id/elevenaml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/onepml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="1"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/twopml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer1pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/onepm"
-                app:layout_constraintTop_toBottomOf="@+id/twelvepml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/threepml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="3"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/fourpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer3pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/threepm"
-                app:layout_constraintTop_toBottomOf="@+id/twopml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/sixpml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/sevenpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer6pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/sixpm"
-                app:layout_constraintTop_toBottomOf="@+id/fivepml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/eightpml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/ninepml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer8pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/eightpm"
-                app:layout_constraintTop_toBottomOf="@+id/sevenpml"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/twelveam2"
-                android:layout_width="70dp"
-                android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="12am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/twelveaml2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/elevenpm" />
-
-            <ImageButton
-                android:id="@+id/twelveaml2"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spacer12am2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twelveam2"
-                app:layout_constraintTop_toBottomOf="@+id/elevenpml"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/spacer12am2"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/twelveamr2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twelveaml2"
-                app:layout_constraintTop_toBottomOf="@+id/spacer11pm" />
-
-            <ImageButton
-                android:id="@+id/twelveamr2"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer12am2"
-                app:layout_constraintTop_toBottomOf="@+id/elevenpmr"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/oneam2"
-                android:layout_width="70dp"
-                android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="1am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/oneaml2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/twelveam2" />
-
-            <ImageButton
-                android:id="@+id/oneaml2"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spacer1am2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/oneam2"
-                app:layout_constraintTop_toBottomOf="@+id/twelveaml2"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/spacer1am2"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/oneamr2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/oneaml2"
-                app:layout_constraintTop_toBottomOf="@+id/spacer12am2" />
-
-            <ImageButton
-                android:id="@+id/oneamr2"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer1am2"
-                app:layout_constraintTop_toBottomOf="@+id/twelveamr2"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/twoam2"
-                android:layout_width="70dp"
-                android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="12am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/twoaml2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/oneam2" />
-
-            <ImageButton
-                android:id="@+id/twoaml2"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spacer2am2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twoam2"
-                app:layout_constraintTop_toBottomOf="@+id/oneaml2"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/spacer2am2"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/twoamr2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twoaml2"
-                app:layout_constraintTop_toBottomOf="@+id/spacer1am2" />
-
-            <ImageButton
-                android:id="@+id/twoamr2"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer2am2"
-                app:layout_constraintTop_toBottomOf="@+id/oneamr2"
-                app:srcCompat="@color/darkRed" />
-
-
-            <ImageButton
-                android:id="@+id/elevenpml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/twelveaml2"
-                app:layout_constraintEnd_toStartOf="@+id/spacer11pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/elevenpm"
-                app:layout_constraintTop_toBottomOf="@+id/tenpml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/tenpml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/elevenpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer10pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tenpm"
-                app:layout_constraintTop_toBottomOf="@+id/ninepml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/ninepml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/tenpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer9pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/ninepm"
-                app:layout_constraintTop_toBottomOf="@+id/eightpml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/sevenpml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/eightpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer7pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/sevenpm"
-                app:layout_constraintTop_toBottomOf="@+id/sixpml"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/fivepml"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/sixpml"
-                app:layout_constraintEnd_toStartOf="@+id/spacer5pm"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/fivepm"
-                app:layout_constraintTop_toBottomOf="@+id/fourpml"
-                app:srcCompat="@color/darkRed" />
-
-            <TextView
-                android:id="@+id/spacer8am"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer9am"
-                app:layout_constraintEnd_toStartOf="@+id/eightamr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/eightaml"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/spacer11pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer12am2"
-                app:layout_constraintEnd_toStartOf="@+id/elevenpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/elevenpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer10pm" />
-
-            <TextView
-                android:id="@+id/spacer10pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer11pm"
-                app:layout_constraintEnd_toStartOf="@+id/tenpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tenpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer9pm" />
-
-            <TextView
-                android:id="@+id/spacer9pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer10pm"
-                app:layout_constraintEnd_toStartOf="@+id/ninepmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/ninepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer8pm" />
-
-            <TextView
-                android:id="@+id/spacer8pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer9pm"
-                app:layout_constraintEnd_toStartOf="@+id/eightpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/eightpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer7pm" />
-
-            <TextView
-                android:id="@+id/spacer7pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer8pm"
-                app:layout_constraintEnd_toStartOf="@+id/sevenpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/sevenpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer6pm" />
-
-            <TextView
-                android:id="@+id/spacer5pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer6pm"
-                app:layout_constraintEnd_toStartOf="@+id/fivepmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/fivepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer4pm" />
-
-            <TextView
-                android:id="@+id/spacer10am"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer11am"
-                app:layout_constraintEnd_toStartOf="@+id/tenamr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tenaml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer9am" />
-
-            <TextView
-                android:id="@+id/spacer4pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer5pm"
-                app:layout_constraintEnd_toStartOf="@+id/fourpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/fourpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer3pm" />
-
-            <TextView
-                android:id="@+id/spacer3pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer4pm"
-                app:layout_constraintEnd_toStartOf="@+id/threepmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/threepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer2pm" />
-
-            <TextView
-                android:id="@+id/spacer2pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer3pm"
-                app:layout_constraintEnd_toStartOf="@+id/twopmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twopml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer1pm" />
-
-            <TextView
-                android:id="@+id/spacer1pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer2pm"
-                app:layout_constraintEnd_toStartOf="@+id/onepmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/onepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer12pm" />
-
-            <TextView
-                android:id="@+id/spacer12pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer1pm"
-                app:layout_constraintEnd_toStartOf="@+id/twelvepmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/twelvepml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer11am" />
-
-            <TextView
-                android:id="@+id/spacer11am"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer12pm"
-                app:layout_constraintEnd_toStartOf="@+id/elevenamr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/elevenaml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer10am" />
-
-            <TextView
-                android:id="@+id/spacer9am"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer10am"
-                app:layout_constraintEnd_toStartOf="@+id/nineamr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/nineaml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer8am" />
-
-            <TextView
-                android:id="@+id/spacer6pm"
-                android:layout_width="20dp"
-                android:layout_height="35dp"
-                app:layout_constraintBottom_toTopOf="@+id/spacer7pm"
-                app:layout_constraintEnd_toStartOf="@+id/sixpmr"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/sixpml"
-                app:layout_constraintTop_toBottomOf="@+id/spacer5pm" />
-
 
             <ImageButton
                 android:id="@+id/eightamr"
@@ -638,96 +354,91 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/nineamr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer8am"
-                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@color/darkRed" />
 
+            <TextView
+                android:id="@+id/nineam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="9am"
+                android:textSize="24sp" />
+
             <ImageButton
-                android:id="@+id/fourpmr"
+                android:id="@+id/nineaml"
                 android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:hint="4.5"
+                android:hint="9"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/fivepmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer4pm"
-                app:layout_constraintTop_toBottomOf="@+id/threepmr"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
-                android:id="@+id/threepmr"
+                android:id="@+id/nineamr"
                 android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:hint="3.5"
+                android:hint="9.5"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/fourpmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer3pm"
-                app:layout_constraintTop_toBottomOf="@+id/twopmr"
                 app:srcCompat="@color/darkRed" />
 
+            <TextView
+                android:id="@+id/tenam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:text="10am"
+                android:textSize="24sp" />
+
             <ImageButton
-                android:id="@+id/twopmr"
+                android:id="@+id/tenaml"
                 android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:hint="2.5"
+                android:hint="10"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/threepmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer2pm"
-                app:layout_constraintTop_toBottomOf="@+id/onepmr"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
-                android:id="@+id/onepmr"
+                android:id="@+id/tenamr"
                 android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:hint="1.5"
+                android:hint="10.5"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/twopmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer1pm"
-                app:layout_constraintTop_toBottomOf="@+id/twelvepmr"
                 app:srcCompat="@color/darkRed" />
 
+            <TextView
+                android:id="@+id/elevenam"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:text="11am"
+                android:textSize="24sp" />
+
             <ImageButton
-                android:id="@+id/twelvepmr"
+                android:id="@+id/elevenaml"
                 android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:hint="12.5"
+                android:hint="11"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/onepmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer12pm"
-                app:layout_constraintTop_toBottomOf="@+id/elevenamr"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
@@ -740,12 +451,197 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/twelvepmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer11am"
-                app:layout_constraintTop_toBottomOf="@+id/tenamr"
                 app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/twelvepm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="12pm"
+                android:textSize="24sp" />
+
+
+            <ImageButton
+                android:id="@+id/twelvepml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="12"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twelvepmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="12.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/onepm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="1pm"
+                android:textSize="24sp" />
+
+
+            <ImageButton
+                android:id="@+id/onepml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="1"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/onepmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="1.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/twopm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="2pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twopml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="2"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twopmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="2.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/threepm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="3pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/threepml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="3"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/threepmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="3.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/fourpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="4pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fourpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="4"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/fourpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="4.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/fivepm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="5pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fivepml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
 
             <ImageButton
                 android:id="@+id/fivepmr"
@@ -757,11 +653,28 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/sixpmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer5pm"
-                app:layout_constraintTop_toBottomOf="@+id/fourpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/sixpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="6pm"
+                android:textSize="24sp" />
+
+
+            <ImageButton
+                android:id="@+id/sixpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
@@ -774,11 +687,61 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/sevenpmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer6pm"
-                app:layout_constraintTop_toBottomOf="@+id/fivepmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/sevenpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="7pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/sevenpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/sevenpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/eightpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="8pm"
+                android:textSize="24sp" />
+
+
+            <ImageButton
+                android:id="@+id/eightpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
                 app:srcCompat="@color/darkRed" />
 
             <ImageButton
@@ -791,11 +754,94 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/ninepmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer8pm"
-                app:layout_constraintTop_toBottomOf="@+id/sevenpmr"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/ninepm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="9pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/ninepml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/ninepmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/tenpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="10pm"
+                android:textSize="24sp" />
+
+
+            <ImageButton
+                android:id="@+id/tenpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/tenpmr"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/elevenpm"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="11pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/elevenpml"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
                 app:srcCompat="@color/darkRed" />
 
 
@@ -809,321 +855,815 @@
                 android:paddingTop="0dp"
                 android:paddingRight="0dp"
                 android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/twelveamr2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer11pm"
-                app:layout_constraintTop_toBottomOf="@+id/tenpmr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/tenpmr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/elevenpmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer10pm"
-                app:layout_constraintTop_toBottomOf="@+id/ninepmr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/ninepmr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/tenpmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer9pm"
-                app:layout_constraintTop_toBottomOf="@+id/eightpmr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/sevenpmr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="5.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/eightpmr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer7pm"
-                app:layout_constraintTop_toBottomOf="@+id/sixpmr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/nineamr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="9.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/tenamr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer9am"
-                app:layout_constraintTop_toBottomOf="@+id/eightamr"
-                app:srcCompat="@color/darkRed" />
-
-            <ImageButton
-                android:id="@+id/tenamr"
-                android:layout_width="60dp"
-                android:layout_height="35dp"
-                android:hint="10.5"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:paddingRight="0dp"
-                android:paddingBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/elevenamr"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/spacer10am"
-                app:layout_constraintTop_toBottomOf="@+id/nineamr"
                 app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/eightam"
+                android:id="@+id/twelveam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="12am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twelveaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/twelveamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/oneam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="1am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/oneaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/oneamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/twoam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="2am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twoaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twoamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/threeam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="3am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/threeaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/threeamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/fouram2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="4am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fouraml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/fouramr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/fiveam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="5am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fiveaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/fiveamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/sixam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="6am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/sixaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/sixamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/sevenam2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="7am"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/sevenaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/sevenamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/eightam2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="8am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/nineam"
-                app:layout_constraintEnd_toStartOf="@+id/eightaml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/eightaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/eightamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/nineam"
+                android:id="@+id/nineam2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="9am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/tenam"
-                app:layout_constraintEnd_toStartOf="@+id/nineaml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eightam" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/nineaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/nineamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/tenam"
+                android:id="@+id/tenam2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
+                android:gravity="center"
                 android:text="10am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/oneam"
-                app:layout_constraintEnd_toStartOf="@+id/tenaml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nineam" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/tenaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/tenamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/oneam"
+                android:id="@+id/elevenam2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
+                android:gravity="center"
                 android:text="11am"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/twelveam"
-                app:layout_constraintEnd_toStartOf="@+id/elevenaml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tenam" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/elevenaml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/elevenamr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/twelveam"
+                android:id="@+id/twelvepm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
+                android:gravity="center"
                 android:text="12pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/onepm"
-                app:layout_constraintEnd_toStartOf="@+id/twelvepml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/oneam" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twelvepml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twelvepmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/onepm"
+                android:id="@+id/onepm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="1pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/twopm"
-                app:layout_constraintEnd_toStartOf="@+id/onepml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/twelveam" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/onepml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/onepmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/twopm"
+                android:id="@+id/twopm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="2pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/threepm"
-                app:layout_constraintEnd_toStartOf="@+id/twopml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/onepm" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/twopml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/twopmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/threepm"
+                android:id="@+id/threepm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="3pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/fourpm"
-                app:layout_constraintEnd_toStartOf="@+id/threepml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/twopm" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/threepml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/threepmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/fourpm"
+                android:id="@+id/fourpm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="4pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/fivepm"
-                app:layout_constraintEnd_toStartOf="@+id/fourpml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/threepm" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fourpml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/fourpmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/fivepm"
+                android:id="@+id/fivepm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="5pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/sixpm"
-                app:layout_constraintEnd_toStartOf="@+id/fivepml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fourpm" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/fivepml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/fivepmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/sixpm"
+                android:id="@+id/sixpm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="6pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/sevenpm"
-                app:layout_constraintEnd_toStartOf="@+id/sixpml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fivepm" />
+                android:textSize="24sp" />
 
-            <TextView
-                android:id="@+id/eightpm"
-                android:layout_width="70dp"
+            <ImageButton
+                android:id="@+id/sixpml2"
+                android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="8pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/ninepm"
-                app:layout_constraintEnd_toStartOf="@+id/eightpml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sevenpm" />
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
 
-            <TextView
-                android:id="@+id/elevenpm"
-                android:layout_width="70dp"
+            <ImageButton
+                android:id="@+id/sixpmr2"
+                android:layout_width="60dp"
                 android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="11pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/twelveam2"
-                app:layout_constraintEnd_toStartOf="@+id/elevenpml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tenpm" />
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
             <TextView
-                android:id="@+id/tenpm"
-                android:layout_width="70dp"
-                android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="10pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/elevenpm"
-                app:layout_constraintEnd_toStartOf="@+id/tenpml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ninepm" />
-
-            <TextView
-                android:id="@+id/ninepm"
-                android:layout_width="70dp"
-                android:layout_height="35dp"
-                android:fontFamily="@font/roboto"
-                android:gravity="center"
-                android:text="9pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/tenpm"
-                app:layout_constraintEnd_toStartOf="@+id/ninepml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/eightpm" />
-
-            <TextView
-                android:id="@+id/sevenpm"
+                android:id="@+id/sevenpm2"
                 android:layout_width="70dp"
                 android:layout_height="35dp"
                 android:fontFamily="@font/roboto"
                 android:gravity="center"
                 android:text="7pm"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/eightpm"
-                app:layout_constraintEnd_toStartOf="@+id/sevenpml"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sixpm" />
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/sevenpml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <ImageButton
+                android:id="@+id/sevenpmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/eightpm2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="8pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/eightpml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/eightpmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/ninepm2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="9pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/ninepml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/ninepmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/tenpm2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="10pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/tenpml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/tenpmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+            <TextView
+                android:id="@+id/elevenpm2"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="11pm"
+                android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/elevenpml2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+            <ImageButton
+                android:id="@+id/elevenpmr2"
+                android:layout_width="60dp"
+                android:layout_height="35dp"
+                android:hint="5.5"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                app:srcCompat="@color/darkRed" />
+
+
+        </GridLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
