@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 import androidx.viewpager.widget.ViewPager;
 
@@ -20,9 +24,11 @@ import java.util.ArrayList;
 public class SwipeRoomsActivity extends FragmentActivity {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
-    RoomPagerAdapter pagerAdapter;
-    ViewPager mViewPager;
-    SharedPreferences myPrefs;
+    private RoomPagerAdapter pagerAdapter;
+    private ViewPager mViewPager;
+    private RoomViewModel roomViewModel;
+    private SharedPreferences myPrefs;
+    private ArrayList<String> selections;
 
     public void onCreate(Bundle savedInstanceState) {
         // ViewPager and its adapters use support library
@@ -31,6 +37,13 @@ public class SwipeRoomsActivity extends FragmentActivity {
         setContentView(R.layout.activity_swipe);
 
         myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        roomViewModel = ViewModelProviders.of(this).get(RoomViewModel.class);
+        roomViewModel.getName().observe(this, new Observer<ArrayList<String>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<String> s) {
+                selections = s;
+            }
+        });
 
         pagerAdapter = new RoomPagerAdapter(getSupportFragmentManager());
         pagerAdapter.setContext(getApplicationContext());
@@ -42,13 +55,8 @@ public class SwipeRoomsActivity extends FragmentActivity {
     public void confirmBooking(View ib) {
         int position = mViewPager.getCurrentItem();
         String room_name = Rooms.eid2room.get(myPrefs.getString("Room_" + position, null));
-        ArrayList<String> selections = RoomFragment.getSelection();
-        //RoomFragment current_frag = (RoomFragment) pagerAdapter.getItem(position);
-        //ArrayList<String> selections = current_frag.getSelection();
-/*
-        for(int i = 0; i < selections.size(); i++) {
-            System.out.println(selections.get(i));
-        }
+
+
 
         Intent intent = new Intent(this, ConfirmPage.class);
         intent.putStringArrayListExtra("selections", selections);
@@ -60,9 +68,10 @@ public class SwipeRoomsActivity extends FragmentActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            startActivity(intent);
+            for(int i = 0; i < selections.size(); i++) {
+                System.out.println(selections.get(i));
+            }
+            //startActivity(intent);
         }
-
-         */
     }
 }

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.room.Room;
 
 // Instances of this class are fragments representing a single
@@ -23,7 +24,9 @@ import androidx.room.Room;
 public class RoomFragment extends Fragment {
     public static final String ARG_OBJECT = "eid";
     private BookingDatabase bookingDatabase;
-    private static ImageButton[] buttons;
+    private ImageButton[] buttons;
+    private ArrayList<String> selection = new ArrayList<>();
+    private RoomViewModel roomViewModel;
 
     // Store instance variables
     private int eid;
@@ -36,6 +39,9 @@ public class RoomFragment extends Fragment {
         View rootView = inflater.inflate(
                 R.layout.activity_rooms, container, false);
         Bundle args = getArguments();
+
+        // init ViewModel
+        roomViewModel = ViewModelProviders.of(requireActivity()).get(RoomViewModel.class);
 
         eid = Integer.parseInt(args.getString(ARG_OBJECT));
         bookingDatabase = BookingDatabase.getBookingDatabase(getActivity());
@@ -64,11 +70,14 @@ public class RoomFragment extends Fragment {
                         if (button.getTag().equals(R.color.blue)) {
                             button.setImageResource(R.color.lightGreen);
                             button.setTag(R.color.lightGreen);
+                            selection.remove(button.getId()+"");
                         }
                         else {
                             button.setImageResource(R.color.blue);
                             button.setTag(R.color.blue);
+                            selection.add(button.getId() + "");
                         }
+                        roomViewModel.setName(selection);
                     }
                 });
             }
@@ -95,17 +104,11 @@ public class RoomFragment extends Fragment {
 
     }
 
-    public static ArrayList<String> getSelection() {
+    public ArrayList<String> getSelection() {
         ArrayList<String> selections = new ArrayList<>();
-        System.out.println(R.color.blue + " blue");
-        System.out.println(R.color.darkRed + " red");
-        System.out.println(R.color.lightGreen + " green");
-        System.out.println(R.color.inactive + " gray");
         // find the blue ones!
         for (ImageButton button : buttons) {
-            System.out.println(button.getTag() + "");
             if (button.getTag().equals(R.color.blue)) {
-                System.out.println("got it");
                 selections.add(button.getId() + "");
             }
         }
