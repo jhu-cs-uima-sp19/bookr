@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,35 @@ public class RoomFragment extends Fragment {
     private BookingDatabase bookingDatabase;
     private ImageButton[] buttons;
     private ArrayList<String> selection = new ArrayList<>();
+    private SparseArray<String> idMap = new SparseArray<>();
     private RoomViewModel roomViewModel;
+    private static final String[] times = {"12:00 - 12:30 AM Today", "12:30 - 1:00 AM Today",
+            "1:00 - 1:30 AM Today", "1:30 - 2:00 AM Today", "2:00 - 2:30 AM Today", "2:30 - 2:00 AM Today",
+            "3:00 - 3:30 AM Today", "3:30 - 4:00 AM Today", "4:00 - 4:30 AM Today", "4:30 - 5:00 AM Today",
+            "5:00 - 5:30 AM Today", "5:30 - 6:00 AM Today", "6:00 - 6:30 AM Today", "6:30 - 7:00 AM Today",
+            "7:00 - 7:30 AM Today", "7:30 - 8:00 AM Today", "8:00 - 8:30 AM Today", "8:30 - 9:00 AM Today",
+            "9:00 - 9:30 AM Today", "9:30 - 10:00 AM Today", "10:00 - 10:30 AM Today", "10:30 - 11:00 AM Today",
+            "11:00 - 11:30 AM Today", "11:30 - 12:00 PM Today", "12:00 - 12:30 PM Today", "12:30 - 1:00 PM Today",
+            "1:00 - 1:30 PM Today", "1:30 - 2:00 PM Today", "2:00 - 2:30 PM Today", "2:30 - 2:00 PM Today",
+            "3:00 - 3:30 PM Today", "3:30 - 4:00 PM Today", "4:00 - 4:30 PM Today", "4:30 - 5:00 PM Today",
+            "5:00 - 5:30 PM Today", "5:30 - 6:00 PM Today", "6:00 - 6:30 PM Today", "6:30 - 7:00 PM Today",
+            "7:00 - 7:30 PM Today", "7:30 - 8:00 PM Today", "8:00 - 8:30 PM Today", "8:30 - 9:00 PM Today",
+            "9:00 - 9:30 PM Today", "9:30 - 10:00 PM Today", "10:00 - 10:30 PM Today", "10:30 - 11:00 PM Today",
+            "11:00 - 11:30 PM Today", "11:30 - 12:00 AM Tomorrow", "12:00 - 12:30 AM Tomorrow", "12:30 - 1:00 AM Tomorrow",
+
+            "1:00 - 1:30 AM Tomorrow", "1:30 - 2:00 AM Tomorrow", "2:00 - 2:30 AM Tomorrow", "2:30 - 2:00 AM Tomorrow",
+            "3:00 - 3:30 AM Tomorrow", "3:30 - 4:00 AM Tomorrow", "4:00 - 4:30 AM Tomorrow", "4:30 - 5:00 AM Tomorrow",
+            "5:00 - 5:30 AM Tomorrow", "5:30 - 6:00 AM Tomorrow", "6:00 - 6:30 AM Tomorrow", "6:30 - 7:00 AM Tomorrow",
+            "7:00 - 7:30 AM Tomorrow", "7:30 - 8:00 AM Tomorrow", "8:00 - 8:30 AM Tomorrow", "8:30 - 9:00 AM Tomorrow",
+            "9:00 - 9:30 AM Tomorrow", "9:30 - 10:00 AM Tomorrow", "10:00 - 10:30 AM Tomorrow", "10:30 - 11:00 AM Tomorrow",
+            "11:00 - 11:30 AM Tomorrow", "11:30 - 12:00 PM Tomorrow", "12:00 - 12:30 PM Tomorrow", "12:30 - 1:00 PM Tomorrow",
+            "1:00 - 1:30 PM Tomorrow", "1:30 - 2:00 PM Tomorrow", "2:00 - 2:30 PM Tomorrow", "2:30 - 2:00 PM Tomorrow",
+            "3:00 - 3:30 PM Tomorrow", "3:30 - 4:00 PM Tomorrow", "4:00 - 4:30 PM Tomorrow", "4:30 - 5:00 PM Tomorrow",
+            "5:00 - 5:30 PM Tomorrow", "5:30 - 6:00 PM Tomorrow", "6:00 - 6:30 PM Tomorrow", "6:30 - 7:00 PM Tomorrow",
+            "7:00 - 7:30 PM Tomorrow", "7:30 - 8:00 PM Tomorrow", "8:00 - 8:30 PM Tomorrow", "8:30 - 9:00 PM Tomorrow",
+            "9:00 - 9:30 PM Tomorrow", "9:30 - 10:00 PM Tomorrow", "10:00 - 10:30 PM Tomorrow", "10:30 - 11:00 PM Tomorrow",
+            "11:00 - 11:30 PM Tomorrow", "11:30 - 12:00 AM Tomorrow"
+    };
 
     // Store instance variables
     private int eid;
@@ -70,12 +99,12 @@ public class RoomFragment extends Fragment {
                         if (button.getTag().equals(R.color.blue)) {
                             button.setImageResource(R.color.lightGreen);
                             button.setTag(R.color.lightGreen);
-                            selection.remove(button.getId()+"");
+                            selection.remove(idMap.get(button.getId()));
                         }
                         else {
                             button.setImageResource(R.color.blue);
                             button.setTag(R.color.blue);
-                            selection.add(button.getId() + "");
+                            selection.add(idMap.get(button.getId()));
                         }
                         roomViewModel.setName(selection);
                     }
@@ -241,5 +270,9 @@ public class RoomFragment extends Fragment {
                 view.findViewById(R.id.tenpml2), view.findViewById(R.id.tenpmr2),
                 view.findViewById(R.id.elevenpml2), view.findViewById(R.id.elevenpmr2),
         };
+
+        for (int i = 0; i < buttons.length; i++) {
+            idMap.append(buttons[i].getId(), times[i]);
+        }
     }
 }

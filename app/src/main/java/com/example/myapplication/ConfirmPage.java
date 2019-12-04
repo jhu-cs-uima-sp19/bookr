@@ -28,11 +28,7 @@ public class ConfirmPage extends AppCompatActivity {
 
         setTitle(room_num);
 
-        ArrayList<String> selections = old_intent.getStringArrayListExtra("selections");
-        ArrayList<String> parsedSelections = new ArrayList<>();
-        for (int j = 0; j < selections.size(); j++) {
-            parsedSelections.add(parseSelection(selections.get(j)));
-        }
+        ArrayList<String> parsedSelections = old_intent.getStringArrayListExtra("selections");
 
         // Build string
         String display = "";

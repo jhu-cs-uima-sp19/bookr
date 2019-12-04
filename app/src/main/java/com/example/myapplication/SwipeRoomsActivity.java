@@ -56,8 +56,6 @@ public class SwipeRoomsActivity extends FragmentActivity {
         int position = mViewPager.getCurrentItem();
         String room_name = Rooms.eid2room.get(myPrefs.getString("Room_" + position, null));
 
-
-
         Intent intent = new Intent(this, ConfirmPage.class);
         intent.putStringArrayListExtra("selections", selections);
         intent.putExtra("room_num", room_name);
@@ -68,10 +66,7 @@ public class SwipeRoomsActivity extends FragmentActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            for(int i = 0; i < selections.size(); i++) {
-                System.out.println(selections.get(i));
-            }
-            //startActivity(intent);
+            startActivity(intent);
         }
     }
 }
