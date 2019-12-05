@@ -23,19 +23,18 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".RoomsActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".ChangePage"
-            android:screenOrientation="portrait"
-            />
         <activity android:name=".SwipeRoomsActivity"
             android:screenOrientation="portrait"
             />
         <activity android:name=".ConfirmPage"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+        />
+        <activity android:name=".ViewActiveActivity"
+            android:screenOrientation="portrait"
+            />
 
         <meta-data
             android:name="preloaded_fonts"

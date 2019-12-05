@@ -60,12 +60,21 @@ public class SwipeRoomsActivity extends FragmentActivity {
         intent.putStringArrayListExtra("selections", selections);
         intent.putExtra("room_num", room_name);
 
+        int count = myPrefs.getInt("total_bookings", 0);
+
         if ((selections.size() == 0) || (selections.size() > 4)) {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Invalid Request",
                     Toast.LENGTH_SHORT);
             toast.show();
-        } else {
+        }
+        else if (count + selections.size() > 4) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "You've reached the max number of bookings",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }
+        else {
             startActivity(intent);
         }
     }

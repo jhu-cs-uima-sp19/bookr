@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.commit();
 
-        // create singleton database
-        //bdatabase = Room.databaseBuilder(getApplicationContext(), BookingDatabase.class,
-        //        BookingDatabase.DB_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
         bdatabase = BookingDatabase.getBookingDatabase(getApplicationContext());
 
         class createDatabase extends AsyncTask<Void, Void, Void> // Need to run database inserts in async thread
@@ -114,8 +111,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void editRooms(View ib) {
-        Intent intent = new Intent(this, ChangePage.class);
+    public void viewActive (View ib) {
+        Intent intent = new Intent(this, ViewActiveActivity.class);
+        System.out.println("esfsef");
         startActivity(intent);
     }
 
