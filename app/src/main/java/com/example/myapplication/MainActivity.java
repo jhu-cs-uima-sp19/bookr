@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.NumberPicker;
@@ -25,7 +26,12 @@ import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -52,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
         }
         editor.commit();
 
+        String[] dates = getResources().getStringArray(R.array.spinnerItems);
+        int i = getCurrentIndex();
+        String[] current_dates = Arrays.copyOfRange(dates, i, dates.length-1);
+        Spinner spinner = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, current_dates);
+        spinner.setAdapter(spinnerArrayAdapter);
+
         bdatabase = BookingDatabase.getBookingDatabase(getApplicationContext());
 
         class createDatabase extends AsyncTask<Void, Void, Void> // Need to run database inserts in async thread
@@ -75,10 +90,29 @@ public class MainActivity extends AppCompatActivity {
         new createDatabase().execute();
         //System.out.println(DebugDB.getAddressLog());
 
-        Intent intent = getIntent();
-        boolean inactive = intent.getBooleanExtra("invisible", true);
         View top = findViewById(R.id.hasBooked);
+       /* Intent intent = getIntent();
+        boolean inactive = intent.getBooleanExtra("invisible", true);
         if (inactive) {
+            top.setVisibility(View.INVISIBLE);
+        }*/
+
+
+        ArrayList<String> current = new ArrayList<>();
+
+        try {
+            current = (ArrayList<String>) ObjectSerializer.deserialize(myPrefs.getString("active_bookings", ObjectSerializer.serialize(new ArrayList<String>())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (String s : current) {
+            System.out.println(s);
+        }
+        if (current.size() > 0) {
+            top.setVisibility(View.VISIBLE);
+
+        } else {
             top.setVisibility(View.INVISIBLE);
         }
         map();
@@ -113,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void viewActive (View ib) {
         Intent intent = new Intent(this, ViewActiveActivity.class);
-        System.out.println("esfsef");
         startActivity(intent);
     }
 
@@ -182,12 +215,6 @@ public class MainActivity extends AppCompatActivity {
         eids.addAll(running); // THIS IS THE FINAL ARRAYLIST WITH BOTH FILTERS APPLIED!
         System.out.println(eids);
 
-/*      // This just applies the time filter (backup).
-        ArrayList<String> eids2 = new ArrayList<>();
-        List<Rooms> start_room = match(start_time);
-        for (Rooms room : start_room) {
-            eids2.add(room.eid + "");
-        }*/
         return eids;
 
     }
@@ -586,6 +613,29 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return rooms;
+    }
+
+    private int getCurrentIndex() {
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
+        int currentIndex = getIndex(dateFormat.format(date).substring(0,2),
+                dateFormat.format(date).substring(3), false, false);
+        return currentIndex;
+    }
+
+    private int getIndex(String hour, String min, boolean isDay2, boolean isEndIndex) {
+        int index = 2 * Integer.parseInt(hour);
+        if (isEndIndex) {
+            index--;
+        }
+        if (Integer.parseInt(min) >= 30) {
+            index++;
+        }
+        if (isDay2) {
+            index += 48;
+        }
+
+        return index;
     }
 
 }

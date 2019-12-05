@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.amitshekhar.DebugDB;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -60,7 +61,12 @@ public class SwipeRoomsActivity extends FragmentActivity {
         intent.putStringArrayListExtra("selections", selections);
         intent.putExtra("room_num", room_name);
 
-        int count = myPrefs.getInt("total_bookings", 0);
+        ArrayList<String> current = new ArrayList<>();
+        try {
+            current = (ArrayList<String>) ObjectSerializer.deserialize(myPrefs.getString("active_bookings", ObjectSerializer.serialize(new ArrayList<String>())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if ((selections.size() == 0) || (selections.size() > 4)) {
             Toast toast = Toast.makeText(getApplicationContext(),
@@ -68,7 +74,7 @@ public class SwipeRoomsActivity extends FragmentActivity {
                     Toast.LENGTH_SHORT);
             toast.show();
         }
-        else if (count + selections.size() > 4) {
+        else if (current.size() + selections.size() > 4) {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "You've reached the max number of bookings",
                     Toast.LENGTH_SHORT);

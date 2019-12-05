@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Spinner;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -24,6 +25,7 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -38,6 +40,8 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         getSupportActionBar().hide();
+
+
 
         Context context = getApplicationContext(); // app level storage
         myPrefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -201,4 +205,6 @@ public class LaunchActivity extends AppCompatActivity {
         queue.add(accessTokenRequest);
 
     }
+
+
 }
