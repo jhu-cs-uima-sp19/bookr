@@ -7,13 +7,15 @@
     android:background="#ebebeb"
     tools:context=".SwipeRoomsActivity">
 
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
-        android:layout_width="0dp"
-        android:layout_height="485dp"
+        android:layout_width="410dp"
+        android:layout_height="550dp"
         android:background="#68ACE5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">

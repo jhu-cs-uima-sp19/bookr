@@ -119,29 +119,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bookRooms(View ib) {
-        ArrayList<String> results = filter();
-        Intent intent = new Intent(this, SwipeRoomsActivity.class);
-        //intent.putExtra("filtered_eids", results);
+        CheckBox c1 = findViewById(R.id.hr5);
+        CheckBox c2 = findViewById(R.id.hr1);
+        CheckBox c3 = findViewById(R.id.hr15);
+        CheckBox c4 = findViewById(R.id.hr2);
+        System.out.println(!c1.isChecked() && !c2.isChecked() && !c3.isChecked() && !c4.isChecked());
 
-        //save in SharedPrefs so we can access filtered list from RoomPagerAdapter
-        SharedPreferences.Editor editor = myPrefs.edit();
-        editor.putInt("num_rooms", results.size());
-
-        for (int i = 0; i < results.size(); i++) {
-            editor.putString("Room_"+i, results.get(i));
-        }
-        editor.apply();
-
-        //Error handling for when num_rooms is 0!!!
-        if (results.size() == 0) {
+        if (!c1.isChecked() && !c2.isChecked() && !c3.isChecked() && !c4.isChecked()) {
+            System.out.println("here here here");
             Context context = getApplicationContext();
-            CharSequence text = "No rooms available";
+            CharSequence text = "Please select a duration";
             int duration = Toast.LENGTH_SHORT;
 
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
-            startActivity(intent);
+            ArrayList<String> results = filter();
+            Intent intent = new Intent(this, SwipeRoomsActivity.class);
+            //intent.putExtra("filtered_eids", results);
+
+            //save in SharedPrefs so we can access filtered list from RoomPagerAdapter
+            SharedPreferences.Editor editor = myPrefs.edit();
+            editor.putInt("num_rooms", results.size());
+
+            for (int i = 0; i < results.size(); i++) {
+                editor.putString("Room_"+i, results.get(i));
+            }
+            editor.apply();
+
+            //Error handling for when num_rooms is 0!!!
+
+            if (results.size() == 0) {
+                Context context = getApplicationContext();
+                CharSequence text = "No rooms available";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } else {
+                startActivity(intent);
+            }
         }
     }
 

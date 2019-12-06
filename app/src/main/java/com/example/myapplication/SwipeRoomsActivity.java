@@ -50,6 +50,7 @@ public class SwipeRoomsActivity extends FragmentActivity {
         pagerAdapter.setContext(getApplicationContext());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(pagerAdapter);
+        selections = new ArrayList<>();
 
     }
 
