@@ -119,7 +119,7 @@ public class RoomFragment extends Fragment {
                 Duration duration = new Duration(back_date, dt); */
                 int cur_index = getCurrentIndex();//Minutes.minutesBetween(back_date, dt).getMinutes()/30;
 
-                if (i > cur_index) {
+                if (i >= cur_index) {
                     button.setImageResource(R.color.darkRed);
                     button.setTag(R.color.darkRed);
                     button.setOnClickListener(null);

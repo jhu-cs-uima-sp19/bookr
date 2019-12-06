@@ -47,11 +47,16 @@ public class ViewActiveActivity extends AppCompatActivity implements MyRecyclerV
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.rvAnimals);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(lm);
         adapter = new MyRecyclerViewAdapter(this, data);
         adapter.setContext(this);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
+                ((LinearLayoutManager) lm).getOrientation());
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
     }
 
