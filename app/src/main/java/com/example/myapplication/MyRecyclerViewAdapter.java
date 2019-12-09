@@ -1,13 +1,20 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.preference.PreferenceManager;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
 
@@ -63,6 +72,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()) {
+                            case R.id.menu2:
+                                showMap(position);
+                                return true;
                             case R.id.menu1:
                                 deleteItem(holder, position);
                                 return true;
@@ -132,5 +144,58 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         editor.apply();
 
     }
+
+    private void showMap(ViewHolder holder, int position) {
+        String room_num = mData.get(position).substring(0,8);
+
+        mContext = mContext.getApplicationContext();
+
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        // Inflate the custom layout/view
+        View customView = inflater.inflate(R.layout.map_popup,null);
+        RelativeLayout mRelativeLayout = customView.findViewById(R.id.rl_custom_layout);
+
+        PopupWindow mPopupWindow = new PopupWindow(
+                customView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+
+        // Set an elevation value for popup window
+        // Call requires API level 21
+        if(Build.VERSION.SDK_INT>=21){
+            mPopupWindow.setElevation(5.0f);
+        }
+
+        ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
+
+        // Set a click listener for the popup window close button
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Dismiss the popup window
+                mPopupWindow.dismiss();
+            }
+        });
+
+        mRelativeLayout.post(new Runnable() {
+            public void run() {
+                mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER, 0, 0);
+            }
+        });
+        //mPopupWindow.showAtLocation(mRelativeLayout, Gravity.CENTER,0,0);
+
+    }
+
+    private void showMap(int position) {
+        mContext = mContext.getApplicationContext();
+        Intent intent = new Intent(mContext, ShowMap.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("room_num", mData.get(position).substring(0,8));
+        mContext.startActivity(intent);
+    }
+
+
 
 }

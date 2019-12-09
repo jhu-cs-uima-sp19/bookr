@@ -32,6 +32,11 @@
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait"
         />
+        <activity android:name=".ShowMap"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ViewActiveActivity"
+            android:label="Your Map"
+            />
         <activity android:name=".ViewActiveActivity"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
